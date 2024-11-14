@@ -1,0 +1,10 @@
+.profile_section_container > form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    padding: 30px;
+}
+
+.profile_section_container > h3 {
+    padding: 20px;
+}
