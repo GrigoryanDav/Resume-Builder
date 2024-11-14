@@ -1,6 +1,7 @@
 export const ROUTE_CONSTANTS = {
     LOGIN: '/login',
     REGISTER: '/register',
+    RESUME_FORM: '/resume-form'
 }
 
 export const FIRESTORE_PATH_NAMES = {
