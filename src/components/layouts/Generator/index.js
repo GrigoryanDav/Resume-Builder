@@ -1,47 +1,27 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { Menu } from "antd";
+import { Menu, Button } from "antd";
 import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
 import './index.css'
 
 const menuItems = [
     {
-        label: (
-            <div className="menu-item">
-                <span className="circle">1</span> Profile Section
-            </div>
-        ),
+        label: '1 Profile Section',
         key: ROUTE_CONSTANTS.PROFILE_SECTION,
     },
     {
-        label: (
-            <div className="menu-item">
-                <span className="circle">2</span> Education Section
-            </div>
-        ),
+        label: '2 Education Section',
         key: ROUTE_CONSTANTS.EDUCATION_SECTION,
     },
     {
-        label: (
-            <div className="menu-item">
-                <span className="circle">3</span> Skills Sector
-            </div>
-        ),
+        label: '3 Skills Sector',
         key: ROUTE_CONSTANTS.SKILLS_SECTOR,
     },
     {
-        label: (
-            <div className="menu-item">
-                <span className="circle">4</span> Mini Project
-            </div>
-        ),
+        label: '4 Mini Project',
         key: ROUTE_CONSTANTS.MINI_PROJECT,
     },
     {
-        label: (
-            <div className="menu-item">
-                <span className="circle">5</span> Social
-            </div>
-        ),
+        label: '5 Social',
         key: ROUTE_CONSTANTS.SOCIAL,
     }
 ]
@@ -63,7 +43,15 @@ const GeneratorLayout = () => {
                 onSelect={handleNavigate}
                 selectedKeys={[pathname]}
             />
-            <Outlet />
+            <div className="content_container">
+                <Outlet />
+            </div>
+
+            <div className="generator_buttons">
+                <Button>BACK</Button>
+                <Button type="primary">NEXT</Button>
+                <Button type="primary">SAVE AND CONTINUE</Button>
+            </div>
         </div>
     )
 }

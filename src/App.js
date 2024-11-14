@@ -9,6 +9,7 @@ import LoadingWrapper from "./components/shared/LoadingWrapper";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfileInfo } from "./state-managment/slices/userProfile";
 import EducationSection from "./pages/EducationSection";
+import ProfileSection from "./pages/ProfileSection";
 import './styles/global.css'
 
 
@@ -32,6 +33,7 @@ const App = () => {
 
                 <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={isAuth ? <GeneratorLayout /> : <Navigate to={ROUTE_CONSTANTS.LOGIN} />}>
                   <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
+                  <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
                 </Route>
               </Route>
             )
