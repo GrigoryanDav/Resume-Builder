@@ -1,10 +1,15 @@
 import { Form, Button, Input, Flex } from "antd"
+import AuthWrapper from "../../components/shared/AuthWrapper"
+import { Link } from "react-router-dom"
+import { ROUTE_CONSTANTS } from "../../core/utils/constants"
+import loginBanner from '../../core/images/cv-login.avif'
 
 
 const Login = () => {
     return (
-        <Form layout="vertical">
-            <Form.Item
+        <AuthWrapper title='Sign In' banner={loginBanner}>
+            <Form layout="vertical">
+                <Form.Item
                     label="Email"
                     name="email"
                     rules={[{
@@ -28,13 +33,14 @@ const Login = () => {
                 </Form.Item>
 
                 <Flex align='center' justify='flex-end' gap='10px'>
-                    <Button>Create account</Button>
+                    <Link to={ROUTE_CONSTANTS.REGISTER}>Create account</Link>
 
                     <Button type='primary' htmlType='submit'>
                         Sign In
                     </Button>
                 </Flex>
-        </Form>
+            </Form>
+        </AuthWrapper>
     )
 }
 
