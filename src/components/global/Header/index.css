@@ -1,0 +1,12 @@
+.header_container {
+    background-color: #f50057;
+    padding: 20px;
+    text-align: center;
+}
+
+.header_container > h2 {
+    color: white;
+    text-transform: uppercase;
+    line-height: 1.6;
+    font-weight: 500;
+}
