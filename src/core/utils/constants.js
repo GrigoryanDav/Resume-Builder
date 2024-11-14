@@ -12,3 +12,5 @@ export const ROUTE_CONSTANTS = {
 export const FIRESTORE_PATH_NAMES = {
     REGISTERED_USERS: 'registered_users'
 }
+
+export const regexpValidation = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
