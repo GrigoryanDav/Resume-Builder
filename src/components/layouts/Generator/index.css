@@ -1,0 +1,25 @@
+.generator_layout_main_container {
+    display: flex;
+    height: calc(100vh - 78.4px);
+    flex-direction: column;
+}
+
+.generator_menu {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    border-bottom: none;
+}
+
+.menu_item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.circle {
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.38);
+}
