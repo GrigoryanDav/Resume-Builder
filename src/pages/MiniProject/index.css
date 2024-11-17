@@ -1,0 +1,22 @@
+.mini_project_container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.mini_project_container > form{
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.mini_project_container > h3 {
+    padding-bottom: 30px;
+}
+
+.mini_project_container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
