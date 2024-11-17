@@ -28,3 +28,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.home_and_logout_buttons {
+    display: flex;
+    gap: 20px;
+}

@@ -1,9 +1,5 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Menu, Button } from "antd";
-import { auth } from "../../../services/firebase";
-import { signOut } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { setIsAuth } from "../../../state-managment/slices/userProfile";
 import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
 import './index.css'
 
@@ -33,19 +29,9 @@ const menuItems = [
 const GeneratorLayout = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
-    const dispatch = useDispatch()
 
     const handleNavigate = ({ key }) => {
         navigate(key)
-    }
-
-    const handleLogOut = async () => {
-        try {
-            await signOut(auth)
-            dispatch(setIsAuth(false))
-        } catch (e) {
-            console.log(e, 'Sign Out Error!')
-        }
     }
 
     const handleHome = () => {
@@ -67,10 +53,11 @@ const GeneratorLayout = () => {
 
             <div className="generator_buttons">
                 <Button>BACK</Button>
-                <Button type="primary">NEXT</Button>
+                <Button>NEXT</Button>
                 <Button type="primary">SAVE AND CONTINUE</Button>
+            </div>
+            <div className="home_and_logout_buttons">
                 <Button onClick={handleHome} type="primary">HOME</Button>
-                <Button onClick={handleLogOut}>Log Out</Button>
             </div>
         </div>
     )

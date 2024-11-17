@@ -19,10 +19,9 @@ const ProfileSection = () => {
                         <Input placeholder="Last Name" />
                     </Form.Item>
                     <Form.Item
-                        label='Profile Image'
                         name='profileImage'
                     >
-                        <Input type="file" />
+                        <Input type="text" placeholder="Image Url"/>
                     </Form.Item>
                 </div>
                 <div>
