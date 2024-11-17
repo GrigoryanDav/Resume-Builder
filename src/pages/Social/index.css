@@ -1,0 +1,16 @@
+.social_container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.social_container > h3 {
+    padding-bottom: 20px;
+}
+
+.social_container > div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

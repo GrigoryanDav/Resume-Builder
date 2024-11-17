@@ -14,6 +14,7 @@ import EducationSection from "./pages/EducationSection";
 import ProfileSection from "./pages/ProfileSection";
 import SkillsSector from "./pages/SkillsSector";
 import MiniProject from "./pages/MiniProject";
+import Social from "./pages/Social";
 import './styles/global.css'
 
 
@@ -41,6 +42,7 @@ const App = () => {
                     <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
                     <Route path={ROUTE_CONSTANTS.SKILLS_SECTOR} element={<SkillsSector />} />
                     <Route path={ROUTE_CONSTANTS.MINI_PROJECT} element={<MiniProject />}/>
+                    <Route path={ROUTE_CONSTANTS.SOCIAL} element={<Social />}/>
                   </Route>
                 </Route>
               </Route>
