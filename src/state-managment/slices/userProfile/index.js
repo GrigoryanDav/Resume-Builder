@@ -24,7 +24,7 @@ export const fetchUserProfileInfo = createAsyncThunk('data/fetchUserProfileInfo'
                 getDoc(userRef)
                 .then((userData) => {
                     if(userData.exists()) {
-                        resolve(userData.exists())
+                        resolve(userData.data())
                     } else {
                         resolve(null)
                     }
