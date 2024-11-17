@@ -48,6 +48,10 @@ const GeneratorLayout = () => {
         }
     }
 
+    const handleHome = () => {
+        navigate(ROUTE_CONSTANTS.CABINET)
+    }
+
     return (
         <div className="generator_layout_main_container">
             <Menu
@@ -65,6 +69,7 @@ const GeneratorLayout = () => {
                 <Button>BACK</Button>
                 <Button type="primary">NEXT</Button>
                 <Button type="primary">SAVE AND CONTINUE</Button>
+                <Button onClick={handleHome} type="primary">HOME</Button>
                 <Button onClick={handleLogOut}>Log Out</Button>
             </div>
         </div>
