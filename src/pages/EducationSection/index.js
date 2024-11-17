@@ -1,4 +1,6 @@
 import { Form, Input, Button, Flex } from "antd"
+import './index.css'
+
 
 const EducationSection = () => {
     const [form] = Form.useForm()
@@ -6,7 +8,7 @@ const EducationSection = () => {
         <div className="education_section_container">
             <h3>Add your Education</h3>
             <Form form={form}>
-                <Flex>
+                <Flex gap={50} justify="space-between">
                     <Form.Item
                         name='courseName'
                         rules={[
@@ -32,7 +34,7 @@ const EducationSection = () => {
                     </Form.Item>
                 </Flex>
 
-                <Flex>
+                <Flex gap={50} justify="space-between">
                     <Form.Item
                         name='completionYear'
                         rules={[
@@ -59,7 +61,7 @@ const EducationSection = () => {
                 </Flex>
             </Form>
 
-            <Flex>
+            <Flex gap={20} justify="center">
                 <Button type="primary">DELETE</Button>
                 <Button type="primary">ADD EDUCATION</Button>
             </Flex>
