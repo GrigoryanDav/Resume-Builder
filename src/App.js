@@ -4,6 +4,8 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import { ROUTE_CONSTANTS } from "./core/utils/constants";
 import GeneratorLayout from "./components/layouts/Generator";
+import Cabinet from "./pages/Cabinet";
+import CabinetLayout from "./components/layouts/Cabinet";
 import { useEffect } from "react";
 import LoadingWrapper from "./components/shared/LoadingWrapper";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,12 +30,14 @@ const App = () => {
           createBrowserRouter(
             createRoutesFromElements(
               <Route path="/" element={<MainLayout />}>
-                <Route path={ROUTE_CONSTANTS.LOGIN} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.RESUME_FORM} /> : <Login />} />
-                <Route path={ROUTE_CONSTANTS.REGISTER} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.RESUME_FORM} /> : <Register />} />
-
-                <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={isAuth ? <GeneratorLayout /> : <Navigate to={ROUTE_CONSTANTS.LOGIN} />}>
-                  <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
-                  <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
+                <Route path={ROUTE_CONSTANTS.LOGIN} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.CABINET} /> : <Login />} />
+                <Route path={ROUTE_CONSTANTS.REGISTER} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.CABINET} /> : <Register />} />
+                <Route path={ROUTE_CONSTANTS.CABINET} element={isAuth ? <CabinetLayout /> : <Navigate to={ROUTE_CONSTANTS.LOGIN} />}>
+                  <Route path={ROUTE_CONSTANTS.CABINET} element={<Cabinet />} />
+                  <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
+                    <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
+                    <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
+                  </Route>
                 </Route>
               </Route>
             )

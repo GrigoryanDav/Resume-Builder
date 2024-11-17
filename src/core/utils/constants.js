@@ -1,9 +1,10 @@
 export const ROUTE_CONSTANTS = {
     LOGIN: '/login',
     REGISTER: '/register',
-    RESUME_FORM: '/resume-form',
-    PROFILE_SECTION: '/resume-form/profile-section',
-    EDUCATION_SECTION: '/resume-form/education-section',
+    CABINET: '/cabinet',
+    RESUME_FORM: '/cabinet/resume-form',
+    PROFILE_SECTION: 'cabinet/resume-form/profile-section',
+    EDUCATION_SECTION: 'cabinet/resume-form/education-section',
     SKILLS_SECTOR: '/resume-form/skills-sector',
     MINI_PROJECT: '/resume-form/mini-project',
     SOCIAL: '/resume-form/social',

@@ -1,0 +1,20 @@
+.cabinet_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: calc(100vh - 78.4px);
+    flex-direction: column;
+}
+
+.cabinet_container > h3 {
+    max-width: 600px;
+    line-height: 1.6;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.92));
+    text-align: center;
+}
+
+.cabinet_container > div {
+    display: flex;
+    gap: 20px;
+}
