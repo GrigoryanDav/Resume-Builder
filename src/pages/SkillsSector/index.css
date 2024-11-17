@@ -1,0 +1,7 @@
+.skills_container {
+    padding: 30px;
+}
+
+.skills_container > h3 {
+    padding-bottom: 20px;
+}

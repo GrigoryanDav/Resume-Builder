@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfileInfo } from "./state-managment/slices/userProfile";
 import EducationSection from "./pages/EducationSection";
 import ProfileSection from "./pages/ProfileSection";
+import SkillsSector from "./pages/SkillsSector";
 import './styles/global.css'
 
 
@@ -37,6 +38,7 @@ const App = () => {
                   <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
                     <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
                     <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
+                    <Route path={ROUTE_CONSTANTS.SKILLS_SECTOR} element={<SkillsSector />} />
                   </Route>
                 </Route>
               </Route>
