@@ -15,7 +15,7 @@ const MainLayout = () => {
         } else {
             navigate(ROUTE_CONSTANTS.CABINET)
         }
-    })
+    }, [isAuth, navigate])
 
     return (
         <div>

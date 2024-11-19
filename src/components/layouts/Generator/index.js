@@ -2,6 +2,7 @@ import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Menu, Button } from "antd";
 import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
 import './index.css'
+import { useEffect } from "react";
 
 const menuItems = [
     {
@@ -29,6 +30,12 @@ const menuItems = [
 const GeneratorLayout = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
+
+    useEffect(() => {
+        if (pathname === ROUTE_CONSTANTS.RESUME_FORM) {
+            navigate(ROUTE_CONSTANTS.PROFILE_SECTION)
+        }
+    }, [pathname, navigate])
 
     const handleNavigate = ({ key }) => {
         navigate(key)

@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/layouts/Main";
-import Login from "./pages/login";
-import Register from "./pages/register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { ROUTE_CONSTANTS } from "./core/utils/constants";
 import GeneratorLayout from "./components/layouts/Generator";
 import Cabinet from "./pages/Cabinet";
