@@ -1,7 +1,7 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { Menu, Button } from "antd";
+import { Menu, Button, Form, notification } from "antd";
 import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import './index.css'
 
 const menuItems = [
@@ -31,17 +31,14 @@ const GeneratorLayout = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const [currentSection, setCurrentSection] = useState(pathname)
-
-    useEffect(() => {
-        if (pathname === ROUTE_CONSTANTS.RESUME_FORM) {
-            navigate(ROUTE_CONSTANTS.PROFILE_SECTION)
-            setCurrentSection(ROUTE_CONSTANTS.PROFILE_SECTION)
-        }
-    }, [pathname, navigate])
+    const [form] = Form.useForm()
+    const [formData, setFormData] = useState({})
 
     const handleNavigate = ({ key }) => {
-        navigate(key)
-        setCurrentSection(key)
+        saveCurrentSectionData(() => {
+            navigate(key)
+            setCurrentSection(key)
+        })
     }
 
     const handleHome = () => {
@@ -49,17 +46,39 @@ const GeneratorLayout = () => {
     }
 
     const handleNext = () => {
-        const currentIndex = menuItems.findIndex(item => item.key === currentSection)
-        const nextIndex = (currentIndex + 1) % menuItems.length
-        navigate(menuItems[nextIndex].key)
-        setCurrentSection(menuItems[nextIndex].key)
+        saveCurrentSectionData(() => {
+            const currentIndex = menuItems.findIndex(item => item.key === currentSection)
+            const nextIndex = (currentIndex + 1) % menuItems.length
+            navigate(menuItems[nextIndex].key)
+            setCurrentSection(menuItems[nextIndex].key)
+        })
     }
 
     const handleBack = () => {
-        const currentIndex = menuItems.findIndex(item => item.key === currentSection)
-        const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length
-        navigate(menuItems[prevIndex].key)
-        setCurrentSection(menuItems[prevIndex].key)
+        saveCurrentSectionData(() => {
+            const currentIndex = menuItems.findIndex(item => item.key === currentSection)
+            const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length
+            navigate(menuItems[prevIndex].key)
+            setCurrentSection(menuItems[prevIndex].key)
+        })
+    }
+
+    const saveCurrentSectionData = (callback) => {
+        form
+            .validateFields()
+            .then((values) => {
+                setFormData((prevData) => ({
+                    ...prevData,
+                    [currentSection]: values
+                }))
+                callback()
+            })
+            .catch(() => {
+                notification.error({
+                    message: 'Validate Error',
+                    description: 'Please fill in all required fields before proceeding.'
+                })
+            })
     }
 
     return (
@@ -72,7 +91,9 @@ const GeneratorLayout = () => {
                 selectedKeys={[currentSection]}
             />
             <div className="content_container">
-                <Outlet />
+                <Form form={form}>
+                    <Outlet context={{ form, formData }}/>
+                </Form>
             </div>
 
             <div className="generator_buttons">

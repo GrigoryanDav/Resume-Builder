@@ -4,7 +4,6 @@ import './index.css'
 
 
 const EducationSection = () => {
-    const [form] = Form.useForm()
     const [educationFields, setEducationFields] = useState([{}])
     const [isDeleteEnabled, setIsDeleteEnabled] = useState(false)
 
@@ -28,13 +27,13 @@ const EducationSection = () => {
     return (
         <div className="education_section_container">
             <h3>Add your Education</h3>
-            <Form form={form}>
+            <div>
                 {
                     educationFields.map((_, index) => (
                         <div key={index}>
                             <Flex gap={50} justify="space-between">
                                 <Form.Item
-                                    name={['education', index, 'courseName']}
+                                    name='courseName'
                                     rules={[
                                         {
                                             required: true,
@@ -46,7 +45,7 @@ const EducationSection = () => {
                                 </Form.Item>
 
                                 <Form.Item
-                                    name={['education', index, 'college-School']}
+                                    name='college-School'
                                     rules={[
                                         {
                                             required: true,
@@ -54,13 +53,13 @@ const EducationSection = () => {
                                         }
                                     ]}
                                 >
-                                    <Input type="text" placeholder="College/School"></Input>
+                                    <Input type="text" placeholder="College/School" ></Input>
                                 </Form.Item>
                             </Flex>
 
                             <Flex gap={50} justify="space-between">
                                 <Form.Item
-                                    name={['education', index, 'completionYear']}
+                                    name='completionYear'
                                     rules={[
                                         {
                                             required: true,
@@ -72,7 +71,7 @@ const EducationSection = () => {
                                 </Form.Item>
 
                                 <Form.Item
-                                    name={['education', index, 'percentage']}
+                                    name='percentage'
                                     rules={[
                                         {
                                             required: true,
@@ -86,7 +85,7 @@ const EducationSection = () => {
                         </div>
                     ))
                 }
-            </Form>
+            </div>
 
             <Flex gap={20} justify="center">
                 <Button

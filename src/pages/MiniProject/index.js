@@ -4,7 +4,6 @@ import './index.css'
 
 
 const MiniProject = () => {
-    const [form] = Form.useForm()
     const [projects, setProjects] = useState([{}])
     const [isDeleteEnabled, setIsDeleteEnabled] = useState(false)
 
@@ -27,12 +26,12 @@ const MiniProject = () => {
     return (
         <div className="mini_project_container">
             <h3>Add your Mini Projects</h3>
-            <Form form={form}>
+            <div>
                 {
                     projects.map((_, index) => (
                         <div key={index}>
                             <Form.Item
-                                name={['project', index, 'projectName']}
+                                name='projectName'
                                 rules={[
                                     {
                                         required: true,
@@ -40,11 +39,11 @@ const MiniProject = () => {
                                     }
                                 ]}
                             >
-                                <Input type="text" placeholder="Project Name" />
+                                  <Input type="text" placeholder="Project Name"/>
                             </Form.Item>
 
                             <Form.Item
-                                name={['project', index, 'techStack']}
+                                name='techStack'
                                 rules={[
                                     {
                                         required: true,
@@ -56,7 +55,7 @@ const MiniProject = () => {
                             </Form.Item>
 
                             <Form.Item
-                                name={['project', index, 'description']}
+                                name='description'
                                 rules={[
                                     {
                                         required: true,
@@ -64,12 +63,12 @@ const MiniProject = () => {
                                     }
                                 ]}
                             >
-                                <Input type="text" placeholder="Description" />
+                                <Input type="text" placeholder="Description"/>
                             </Form.Item>
                         </div>
                     ))
                 }
-            </Form>
+            </div>
 
             <div>
                 <Button

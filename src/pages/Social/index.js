@@ -3,7 +3,6 @@ import { useState } from "react"
 import './index.css'
 
 const Social = () => {
-    const [form] = Form.useForm()
     const [socials, setSocials] = useState([{}])
     const [isDeleteEnabled, setIsDeleteEnabled] = useState(false)
 
@@ -26,12 +25,12 @@ const Social = () => {
     return (
         <div className="social_container">
             <h3>Add social links like linkedin , github etc</h3>
-            <Form form={form}>
+            <div>
                 {
                     socials.map((_, index) => (
                         <div key={index}>
                             <Form.Item
-                                name={['social', index, 'socialLinks']}
+                                name='socialLinks'
                                 rules={[
                                     {
                                         required: true,
@@ -39,12 +38,12 @@ const Social = () => {
                                     }
                                 ]}
                             >
-                                <Input type="text" placeholder="Social Links" />
+                                <Input type="text" placeholder="Social Links"/>
                             </Form.Item>
                         </div>
                     ))
                 }
-            </Form>
+            </div>
 
             <div>
                 <Button

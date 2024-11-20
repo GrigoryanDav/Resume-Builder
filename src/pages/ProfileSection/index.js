@@ -3,11 +3,10 @@ import "./index.css"
 
 
 const ProfileSection = () => {
-    const [form] = Form.useForm()
     return (
         <div className="profile_section_container">
             <h3>Add your profile details</h3>
-            <Form form={form}>
+            <div>
                 <div>
                     <Form.Item
                         name='firstName'
@@ -67,7 +66,7 @@ const ProfileSection = () => {
                         <Input placeholder="Adress" />
                     </Form.Item>
                 </div>
-            </Form>
+            </div>
         </div>
     )
 }
