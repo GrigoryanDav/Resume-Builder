@@ -1,7 +1,12 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Menu, Button, Form, notification } from "antd";
 import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from '../../../services/firebase'
+import { doc, updateDoc } from "firebase/firestore";
+import { FIRESTORE_PATH_NAMES, SECTION_KEYS } from "../../../core/utils/constants";
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserProfileInfo } from '../../../state-managment/slices/userProfile';
 import './index.css'
 
 const menuItems = [
@@ -33,6 +38,33 @@ const GeneratorLayout = () => {
     const [currentSection, setCurrentSection] = useState(pathname)
     const [form] = Form.useForm()
     const [formData, setFormData] = useState({})
+    const dispatch = useDispatch()
+    const { authUserInfo: { userData: { uid } } } = useSelector((store) => store.userProfile)
+    const [loading, setLoading] = useState(false)
+    const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
+    
+
+    // const formValues = Form.useWatch([], form)
+    // const isDisabled = !formValues || Object.values(formValues).some((value) => !value)
+
+    const currentFormValues = Form.useWatch([], form)
+    
+    useEffect(() => {
+        const allFieldsFilled = currentFormValues && Object.values(currentFormValues).every(value => value)
+
+        if(currentSection === ROUTE_CONSTANTS.SOCIAL) {
+            setIsCurrentSectionComplete(allFieldsFilled)
+        } else {
+            setIsCurrentSectionComplete(false)
+        }
+    }, [currentFormValues, currentSection])
+
+    useEffect(() => {
+        if (pathname === ROUTE_CONSTANTS.RESUME_FORM) {
+            navigate(ROUTE_CONSTANTS.PROFILE_SECTION);
+            setCurrentSection(ROUTE_CONSTANTS.PROFILE_SECTION);
+        }
+    }, [pathname, navigate]);
 
     const handleNavigate = ({ key }) => {
         saveCurrentSectionData(() => {
@@ -67,11 +99,24 @@ const GeneratorLayout = () => {
         form
             .validateFields()
             .then((values) => {
-                setFormData((prevData) => ({
-                    ...prevData,
-                    [currentSection]: values
-                }))
-                callback()
+                const sectionKey = SECTION_KEYS[currentSection]
+                if (!sectionKey) {
+                    notification.error({
+                        message: 'Error! Invalid section key.'
+                    })
+                    return
+                }
+
+                const updatedFormData = {
+                    ...formData,
+                    [sectionKey]: {
+                        ...formData[sectionKey],
+                        ...values
+                    }
+                }
+
+                setFormData(updatedFormData)
+                callback(updatedFormData)
             })
             .catch(() => {
                 notification.error({
@@ -79,6 +124,30 @@ const GeneratorLayout = () => {
                     description: 'Please fill in all required fields before proceeding.'
                 })
             })
+    }
+
+    const handleSaveAndContinue = () => {
+        saveCurrentSectionData(async (updatedFormData) => {
+            setLoading(true)
+            try {
+                const userDocRef = doc(db, FIRESTORE_PATH_NAMES.REGISTERED_USERS, uid)
+                await updateDoc(userDocRef, {
+                    "resume_sections": updatedFormData
+                })
+                dispatch(fetchUserProfileInfo())
+                navigate(ROUTE_CONSTANTS.USER_RESUME)
+                notification.success({
+                    message: 'Data successfully saved!'
+                })
+            } catch (error) {
+                console.log(error)
+                notification.error({
+                    message: 'Oooppps ):  Error during data saving!'
+                })
+            } finally {
+                setLoading(false)
+            }
+        })
     }
 
     return (
@@ -91,15 +160,25 @@ const GeneratorLayout = () => {
                 selectedKeys={[currentSection]}
             />
             <div className="content_container">
-                <Form form={form}>
-                    <Outlet context={{ form, formData }}/>
+                <Form
+                    form={form}
+                    onFinish={handleSaveAndContinue}
+                >
+                    <Outlet />
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        loading={loading}
+                        disabled={!isCurrentSectionComplete}
+                    >
+                        SAVE AND CONTINUE
+                    </Button>
                 </Form>
             </div>
 
             <div className="generator_buttons">
                 <Button onClick={handleBack}>BACK</Button>
                 <Button onClick={handleNext}>NEXT</Button>
-                <Button type="primary">SAVE AND CONTINUE</Button>
             </div>
             <div className="home_and_logout_buttons">
                 <Button onClick={handleHome} type="primary">HOME</Button>
