@@ -43,10 +43,6 @@ const GeneratorLayout = () => {
     const [loading, setLoading] = useState(false)
     const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
     
-
-    // const formValues = Form.useWatch([], form)
-    // const isDisabled = !formValues || Object.values(formValues).some((value) => !value)
-
     const currentFormValues = Form.useWatch([], form)
     
     useEffect(() => {
