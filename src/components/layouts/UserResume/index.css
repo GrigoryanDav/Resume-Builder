@@ -1,0 +1,7 @@
+.user_resume_layout  {
+    text-align: center;
+}
+
+.user_resume_layout > a > button {
+    margin: 50px 0;
+}
