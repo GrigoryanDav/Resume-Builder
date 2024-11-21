@@ -10,16 +10,18 @@ import { useEffect } from "react";
 import LoadingWrapper from "./components/shared/LoadingWrapper";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfileInfo } from "./state-managment/slices/userProfile";
-import EducationSection from "./pages/EducationSection";
-import ProfileSection from "./pages/ProfileSection";
-import SkillsSector from "./pages/SkillsSector";
-import MiniProject from "./pages/MiniProject";
-import Social from "./pages/Social";
+import EducationSection from "./components/shared/EducationSection";
+import ProfileSection from "./components/shared/ProfileSection";
+import SkillsSector from "./components/shared/SkillsSector";
+import MiniProject from "./components/shared/MiniProject";
+import Social from "./components/shared/Social";
+import UserResume from "./pages/UserResume";
+import UserResumeLayout from "./components/layouts/UserResume";
 import './styles/global.css'
 
 
 const App = () => {
-  const { loading, authUserInfo: { isAuth } } = useSelector((store => store.userProfile))
+  const { loading, authUserInfo: { isAuth, userData: { resume_sections } } } = useSelector((store => store.userProfile))
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,6 +39,9 @@ const App = () => {
                 <Route path={ROUTE_CONSTANTS.REGISTER} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.CABINET} /> : <Register />} />
                 <Route path={ROUTE_CONSTANTS.CABINET} element={isAuth ? <CabinetLayout /> : <Navigate to={ROUTE_CONSTANTS.LOGIN} />}>
                   <Route path={ROUTE_CONSTANTS.CABINET} element={<Cabinet />} />
+                  <Route path={ROUTE_CONSTANTS.USER_RESUME} element={ resume_sections ? <UserResumeLayout /> : <Navigate to={ROUTE_CONSTANTS.RESUME_FORM} />}>
+                    <Route path={ROUTE_CONSTANTS.USER_RESUME} element={<UserResume />}/>
+                  </Route>
                   <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
                     <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
                     <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
