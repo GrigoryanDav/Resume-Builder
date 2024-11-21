@@ -8,6 +8,7 @@ export const ROUTE_CONSTANTS = {
     SKILLS_SECTOR: '/cabinet/resume-form/skills-sector',
     MINI_PROJECT: '/cabinet/resume-form/mini-project',
     SOCIAL: '/cabinet/resume-form/social',
+    USER_RESUME: '/cabinet/resume'
 }
 
 export const FIRESTORE_PATH_NAMES = {
@@ -15,3 +16,11 @@ export const FIRESTORE_PATH_NAMES = {
 }
 
 export const regexpValidation = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+
+export const SECTION_KEYS = {
+    '/cabinet/resume-form/profile-section': 'profile',
+    '/cabinet/resume-form/education-section': 'education',
+    '/cabinet/resume-form/skills-sector': 'skills',
+    '/cabinet/resume-form/mini-project': 'miniProject',
+    '/cabinet/resume-form/social': 'social',
+};
