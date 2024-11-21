@@ -31,7 +31,7 @@ const Cabinet = () => {
             </h3>
             <div>
             <Link to={ROUTE_CONSTANTS.RESUME_FORM}><Button type="primary">Create Resume</Button></Link>
-            <Button type="primary">My Resume</Button>
+            <Link to={ROUTE_CONSTANTS.USER_RESUME}><Button type="primary">My Resume</Button></Link>
             <Button onClick={handleLogOut} type="primary">Log Out</Button>
             </div>
         </div>
