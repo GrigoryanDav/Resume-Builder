@@ -26,23 +26,29 @@ const Social = () => {
         <div className="social_container">
             <h3>Add social links like linkedin , github etc</h3>
             <div>
-                {
-                    socials.map((_, index) => (
-                        <div key={index}>
-                            <Form.Item
-                                name='socialLinks'
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your Social Links'
-                                    }
-                                ]}
-                            >
-                                <Input type="text" placeholder="Social Links"/>
-                            </Form.Item>
-                        </div>
-                    ))
-                }
+                <Form.Item
+                    name='social_facebook'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your Facebook Link'
+                        }
+                    ]}
+                >
+                    <Input type="text" placeholder="Facebook Link" />
+                </Form.Item>
+
+                <Form.Item
+                    name='social_github'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please Input your GitHub Link'
+                        }
+                    ]}
+                >
+                    <Input type="text" placeholder="GitHub Link" />
+                </Form.Item>
             </div>
 
             <div>

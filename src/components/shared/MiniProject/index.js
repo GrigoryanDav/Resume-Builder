@@ -31,7 +31,7 @@ const MiniProject = () => {
                     projects.map((_, index) => (
                         <div key={index}>
                             <Form.Item
-                                name='projectName'
+                                name={`project_${index}_projectName`}
                                 rules={[
                                     {
                                         required: true,
@@ -43,7 +43,7 @@ const MiniProject = () => {
                             </Form.Item>
 
                             <Form.Item
-                                name='techStack'
+                                name={`project_${index}_techStack`}
                                 rules={[
                                     {
                                         required: true,
@@ -55,7 +55,7 @@ const MiniProject = () => {
                             </Form.Item>
 
                             <Form.Item
-                                name='description'
+                                name={`project_${index}_description`}
                                 rules={[
                                     {
                                         required: true,

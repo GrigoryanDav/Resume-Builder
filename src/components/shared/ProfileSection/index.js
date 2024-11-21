@@ -52,7 +52,7 @@ const ProfileSection = () => {
                             }
                         ]}
                     >
-                        <Input placeholder="Phone Number" type="number" />
+                        <Input placeholder="Phone Number" type="text" />
                     </Form.Item>
                     <Form.Item
                         name='adress'
