@@ -24,57 +24,56 @@ const EducationSection = () => {
             <div>
                 {educationFields.map((_, index) => (
                     <div key={index} className="education_form_row">
-                        <Form.Item
-                            name={`education_${index}_courseName`}
-                            label="Course Name"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Please input your Course Name",
-                                },
-                            ]}
-                        >
-                            <Input type="text" placeholder="Course Name" />
-                        </Form.Item>
+                        <div>
+                            <Form.Item
+                                name={`education_${index}_courseName`}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Please input your Course Name",
+                                    },
+                                ]}
+                            >
+                                <Input type="text" placeholder="Course Name" />
+                            </Form.Item>
 
-                        <Form.Item
-                            name={`education_${index}_collegeSchool`}
-                            label="College/School"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Please input your College or School",
-                                },
-                            ]}
-                        >
-                            <Input type="text" placeholder="College/School" />
-                        </Form.Item>
+                            <Form.Item
+                                name={`education_${index}_collegeSchool`}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Please input your College or School",
+                                    },
+                                ]}
+                            >
+                                <Input type="text" placeholder="College/School" />
+                            </Form.Item>
+                        </div>
+                        <div>
+                            <Form.Item
+                                name={`education_${index}_completionYear`}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Please input your Completion Year",
+                                    },
+                                ]}
+                            >
+                                <Input type="number" placeholder="Completion Year" />
+                            </Form.Item>
 
-                        <Form.Item
-                            name={`education_${index}_completionYear`}
-                            label="Completion Year"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Please input your Completion Year",
-                                },
-                            ]}
-                        >
-                            <Input type="number" placeholder="Completion Year" />
-                        </Form.Item>
-
-                        <Form.Item
-                            name={`education_${index}_percentage`}
-                            label="Percentage"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Please input your Percentage",
-                                },
-                            ]}
-                        >
-                            <Input type="text" placeholder="Percentage" />
-                        </Form.Item>
+                            <Form.Item
+                                name={`education_${index}_percentage`}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Please input your Percentage",
+                                    },
+                                ]}
+                            >
+                                <Input type="text" placeholder="Percentage" />
+                            </Form.Item>
+                        </div>
                     </div>
                 ))}
             </div>

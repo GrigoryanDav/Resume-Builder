@@ -26,7 +26,7 @@ const SkillsSector = () => {
                 >
                     <Select
                         mode="tags"
-                        style={{ width: '100%' }}
+                        style={{ width: 500 }}
                         placeholder='Type and press Enter to add Skill'
                         value={skills}
                         onChange={handleChange}

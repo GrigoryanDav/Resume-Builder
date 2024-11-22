@@ -6,3 +6,17 @@
 .education_section_container > h3 {
     padding-bottom: 30px ;
 }
+
+.education_section_container > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.education_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
