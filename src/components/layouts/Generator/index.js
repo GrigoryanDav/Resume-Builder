@@ -44,7 +44,7 @@ const GeneratorLayout = () => {
     const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
 
     const currentFormValues = Form.useWatch([], form)
-    
+
     useEffect(() => {
         const savedData = sessionStorage.getItem(`formData-${currentSection}`)
         if (savedData) {
@@ -193,7 +193,7 @@ const GeneratorLayout = () => {
                 <Button onClick={handleBack}>BACK</Button>
                 <Button onClick={handleNext}>NEXT</Button>
             </div>
-            <div className="home_and_logout_buttons">
+            <div className="home_button">
                 <Button onClick={handleHome} type="primary">HOME</Button>
             </div>
         </div>
