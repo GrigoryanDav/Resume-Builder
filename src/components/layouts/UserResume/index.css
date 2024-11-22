@@ -5,3 +5,20 @@
 .user_resume_layout > a > button {
     margin: 50px 0;
 }
+
+.user_resume_layout > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    gap: 20px;
+}
+
+.user_resume_layout > ul > li {
+    width: 200px;
+    border: 2px solid black;
+}
+
+.user_resume_layout > div > div {
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.92);
+}

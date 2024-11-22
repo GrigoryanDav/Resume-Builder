@@ -1,0 +1,102 @@
+.userResume_container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-height: calc(100vh - 78.4px);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.leftSide_container {
+    background-color: rgb(245, 243, 243);
+    padding: 20px;
+    text-align: center;
+}
+
+.leftSide_container > img {
+    width: 100%;
+    height: 40%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.skills > ul{
+    list-style: none;
+}
+
+.rightSide_container {
+    text-align: center;
+    padding: 20px;
+}
+
+.skills {
+    padding: 10px;
+}
+
+.skills > ul > li {
+    padding: 5px;
+    text-transform: capitalize;
+}
+
+.education {
+    padding: 10px;
+}
+
+.education > h2 {
+    padding: 5px;
+}
+
+.education > div > div > h3 {
+    padding: 5px;
+    font-weight: 400;
+}
+
+.education > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.rightSide_container > h1 {
+    padding: 10px;
+}
+
+.mini_project {
+    padding: 10px;
+}
+
+.mini_project > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.mini_project > div > div > h3 {
+    font-weight: 400;
+    padding: 5px;
+}
+
+.contact {
+    padding: 10px;
+}
+
+.contact > div > h3 {
+    padding: 5px;
+}
+
+.social {
+    padding: 10px;
+}
+
+.social > div > a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 5px 0;
+    display: block;
+}
+
+.social > div {
+    margin: 10px 0;
+}

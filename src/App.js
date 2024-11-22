@@ -15,8 +15,10 @@ import ProfileSection from "./components/shared/ProfileSection";
 import SkillsSector from "./components/shared/SkillsSector";
 import MiniProject from "./components/shared/MiniProject";
 import Social from "./components/shared/Social";
-import UserResume from "./pages/UserResume";
+import FirstResume from "./components/shared/UserResume-1";
 import UserResumeLayout from "./components/layouts/UserResume";
+import SecondResume from "./components/shared/UserRsume-2";
+import UserResume from "./pages/UserResume";
 import './styles/global.css'
 
 
@@ -41,6 +43,8 @@ const App = () => {
                   <Route path={ROUTE_CONSTANTS.CABINET} element={<Cabinet />} />
                   <Route path={ROUTE_CONSTANTS.USER_RESUME} element={ resume_sections ? <UserResumeLayout /> : <Navigate to={ROUTE_CONSTANTS.RESUME_FORM} />}>
                     <Route path={ROUTE_CONSTANTS.USER_RESUME} element={<UserResume />}/>
+                    <Route path={ROUTE_CONSTANTS.USER_RESUME_1} element={<FirstResume />}/>
+                    <Route path={ROUTE_CONSTANTS.USER_RESUME_2} element={<SecondResume />}/>
                   </Route>
                   <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
                     <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />

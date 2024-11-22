@@ -8,7 +8,9 @@ export const ROUTE_CONSTANTS = {
     SKILLS_SECTOR: '/cabinet/resume-form/skills-sector',
     MINI_PROJECT: '/cabinet/resume-form/mini-project',
     SOCIAL: '/cabinet/resume-form/social',
-    USER_RESUME: '/cabinet/resume'
+    USER_RESUME: '/cabinet/resume',
+    USER_RESUME_1: '/cabinet/resume/1',
+    USER_RESUME_2: '/cabinet/resume/2',
 }
 
 export const FIRESTORE_PATH_NAMES = {
