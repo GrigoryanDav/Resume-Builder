@@ -42,13 +42,22 @@ const GeneratorLayout = () => {
     const { authUserInfo: { userData: { uid } } } = useSelector((store) => store.userProfile)
     const [loading, setLoading] = useState(false)
     const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
-    
+
     const currentFormValues = Form.useWatch([], form)
     
     useEffect(() => {
-        const allFieldsFilled = currentFormValues && Object.values(currentFormValues).every(value => value)
+        const savedData = sessionStorage.getItem(`formData-${currentSection}`)
+        if (savedData) {
+            form.setFieldsValue(JSON.parse(savedData))
+        }
+    }, [currentSection, form])
 
-        if(currentSection === ROUTE_CONSTANTS.SOCIAL) {
+    useEffect(() => {
+        const allFieldsFilled = currentFormValues &&
+            Object.keys(currentFormValues).length > 0 &&
+            Object.values(currentFormValues).every(value => value)
+
+        if (currentSection === ROUTE_CONSTANTS.SOCIAL) {
             setIsCurrentSectionComplete(allFieldsFilled)
         } else {
             setIsCurrentSectionComplete(false)
@@ -112,6 +121,7 @@ const GeneratorLayout = () => {
                 }
 
                 setFormData(updatedFormData)
+                sessionStorage.setItem(`formData-${currentSection}`, JSON.stringify(values))
                 callback(updatedFormData)
             })
             .catch(() => {
@@ -122,6 +132,12 @@ const GeneratorLayout = () => {
             })
     }
 
+    const clearAllSessionData = () => {
+        menuItems.forEach(item => {
+            sessionStorage.removeItem(`formData-${item.key}`);
+        })
+    }
+
     const handleSaveAndContinue = () => {
         saveCurrentSectionData(async (updatedFormData) => {
             setLoading(true)
@@ -130,6 +146,7 @@ const GeneratorLayout = () => {
                 await updateDoc(userDocRef, {
                     "resume_sections": updatedFormData
                 })
+                clearAllSessionData()
                 dispatch(fetchUserProfileInfo())
                 navigate(ROUTE_CONSTANTS.USER_RESUME)
                 notification.success({
