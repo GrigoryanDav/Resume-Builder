@@ -32,6 +32,12 @@ const menuItems = [
     }
 ]
 
+const clearAllSessionData = () => {
+    menuItems.forEach(item => {
+        sessionStorage.removeItem(`formData-${item.key}`);
+    })
+}
+
 const GeneratorLayout = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -74,6 +80,12 @@ const GeneratorLayout = () => {
             setCurrentSection(ROUTE_CONSTANTS.PROFILE_SECTION);
         }
     }, [pathname, navigate]);
+
+    useEffect(() => {
+        if (!pathname.startsWith('/cabinet/resume-form/')) {
+            clearAllSessionData()
+        }
+    }, [pathname])
 
     const handleNavigate = ({ key }) => {
         saveCurrentSectionData(() => {
@@ -134,12 +146,6 @@ const GeneratorLayout = () => {
                     description: 'Please fill in all required fields before proceeding.'
                 })
             })
-    }
-
-    const clearAllSessionData = () => {
-        menuItems.forEach(item => {
-            sessionStorage.removeItem(`formData-${item.key}`);
-        })
     }
 
     const handleSaveAndContinue = () => {
