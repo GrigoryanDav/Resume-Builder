@@ -59,27 +59,6 @@ const UserResume = () => {
         })
     }
 
-    // const showSocials = () => {
-    //     const groupedSocials = Object.keys(social).reduce((acc, key) => {
-    //         const index = key.split('_')[1];
-    //         const field = key.split('_')[2];
-
-    //         if (!acc[index]) acc[index] = {};
-    //         acc[index][field] = social[key];
-
-    //         return acc;
-    //     }, {});
-
-    //     return Object.keys(groupedSocials).map((index) => {
-    //         const item = groupedSocials[index]
-    //         return (
-    //             <div key={index}>
-    //                 <a href={item.socialLinks}>Youtube</a>
-    //             </div>
-    //         )
-    //     })
-    // }
-
     return (
         <div className="userResume_container">
             <div className="leftSide_container">
@@ -95,8 +74,8 @@ const UserResume = () => {
                 <div className="social">
                     <h2>Socials</h2>
                     <div>
-                        <a href={social.social_facebook}>FACEBOOK</a>
-                        <a href={social.social_github}>GITHUB</a>
+                        <a href={social.social_facebook} target="_blank" rel="noreferrer">FACEBOOK</a>
+                        <a href={social.social_github} target="_blank" rel="noreferrer">GITHUB</a>
                     </div>
                 </div>
             </div>
