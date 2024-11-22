@@ -39,18 +39,22 @@ const GeneratorLayout = () => {
     const [form] = Form.useForm()
     const [formData, setFormData] = useState({})
     const dispatch = useDispatch()
-    const { authUserInfo: { userData: { uid } } } = useSelector((store) => store.userProfile)
+    const { authUserInfo: { userData: { uid, resume_sections } } } = useSelector((store) => store.userProfile)
     const [loading, setLoading] = useState(false)
     const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
 
     const currentFormValues = Form.useWatch([], form)
-
+    
     useEffect(() => {
-        const savedData = sessionStorage.getItem(`formData-${currentSection}`)
-        if (savedData) {
-            form.setFieldsValue(JSON.parse(savedData))
-        }
-    }, [currentSection, form])
+        if (resume_sections) {
+            form.setFieldsValue(resume_sections[SECTION_KEYS[currentSection]] || {})
+        } else {
+            const savedData = sessionStorage.getItem(`formData-${currentSection}`)
+            if (savedData) {
+                form.setFieldsValue(JSON.parse(savedData))
+            }
+        } 
+    }, [resume_sections, currentSection, form])
 
     useEffect(() => {
         const allFieldsFilled = currentFormValues &&
