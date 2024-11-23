@@ -1,0 +1,25 @@
+.resume_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.resume_container > h3 {
+    max-width: 800px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: left;
+    padding: 50px 0;
+    line-height: 1.6;
+    filter: drop-shadow(3px 5px 8px rgba(206, 13, 87, 0.91));
+    color: blueviolet;
+}
+
+.resume_container > h3 > span {
+    font-size: 20px;
+    font-weight: 700;
+}
