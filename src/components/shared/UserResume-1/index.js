@@ -1,64 +1,11 @@
 import { useSelector } from "react-redux"
-import { GithubOutlined, FacebookOutlined, PhoneOutlined, EnvironmentOutlined, CheckOutlined, PlusOutlined, FundProjectionScreenOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined, BulbOutlined, MailOutlined } from '@ant-design/icons'
+import { showEducations, showMiniProjects, showSkills } from "../../../core/helpers"
+import { GithubOutlined, FacebookOutlined, PhoneOutlined, EnvironmentOutlined, FundProjectionScreenOutlined, ScheduleOutlined, ContactsOutlined,  BulbOutlined, MailOutlined } from '@ant-design/icons'
 import './index.css'
 
 
 const FirstResume = () => {
     const { authUserInfo: { userData: { resume_sections: { profile, education, skills: { skills }, social, miniProject } } } } = useSelector((store) => store.userProfile)
-
-    const showSkills = (skills) => {
-        return skills.map((skill, index) => (
-            <li key={index}><span><CheckOutlined /></span>{skill}</li>
-        ))
-    }
-
-    const showEducations = () => {
-        const groupedEducation = Object.keys(education).reduce((acc, key) => {
-            const index = key.split('_')[1];
-            const field = key.split('_')[2];
-
-            if (!acc[index]) acc[index] = {};
-            acc[index][field] = education[key];
-
-            return acc;
-        }, {});
-
-        return Object.keys(groupedEducation).map((index) => {
-            const item = groupedEducation[index];
-            return (
-                <div key={index}>
-                    <h3><span><PlusOutlined /></span>College/School: {item.collegeSchool}</h3>
-                    <h3><span><PlusOutlined /></span>Course Name: {item.courseName}</h3>
-                    <h3><span><PlusOutlined /></span>Completion Year: {item.completionYear}</h3>
-                    <h3><span><PlusOutlined /></span>Percentage: {item.percentage}</h3>
-                </div>
-            );
-        });
-    };
-
-
-    const showMiniProjects = () => {
-        const groupedMiniProjects = Object.keys(miniProject).reduce((acc, key) => {
-            const index = key.split('_')[1];
-            const field = key.split('_')[2];
-
-            if (!acc[index]) acc[index] = {};
-            acc[index][field] = miniProject[key];
-
-            return acc;
-        }, {});
-
-        return Object.keys(groupedMiniProjects).map((index) => {
-            const item = groupedMiniProjects[index]
-            return (
-                <div key={index}>
-                    <h3><span><ProjectOutlined /></span>Project Name: {item.projectName}</h3>
-                    <h3><span><ProjectOutlined /></span>Tech Stack: {item.techStack}</h3>
-                    <h3><span><ProjectOutlined /></span>Description: {item.description}</h3>
-                </div>
-            )
-        })
-    }
 
     return (
         <div className="userResume_container">
@@ -87,7 +34,7 @@ const FirstResume = () => {
                 <div className="education">
                     <h2><span><ScheduleOutlined /></span>Education</h2>
                     <div>
-                        {showEducations()}
+                        {showEducations(education)}
                     </div>
                 </div>
                 <hr />
@@ -101,7 +48,7 @@ const FirstResume = () => {
                 <div className="mini_project">
                     <h3><span><FundProjectionScreenOutlined /></span>Mini Project</h3>
                     <div>
-                        {showMiniProjects()}
+                        {showMiniProjects(miniProject)}
                     </div>
                 </div>
             </div>
