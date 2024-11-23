@@ -1,0 +1,52 @@
+.initialPage_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: calc(100vh - 78.4px);
+}
+
+.first-image {
+    background: url('../../core/images/initial-left.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.second-image {
+    background: url('../../core/images/initial-right.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.information_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 78.4px);
+    background: url('../../core/images/initial-middle.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.information_container > h1 {
+    text-align: center;
+    padding: 30px 0;
+    text-transform: capitalize;
+}
+
+.information_container > h3 {
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 1.4
+}
+
+.information_container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 0;
+}

@@ -19,6 +19,7 @@ import FirstResume from "./components/shared/UserResume-1";
 import UserResumeLayout from "./components/layouts/UserResume";
 import SecondResume from "./components/shared/UserRsume-2";
 import UserResume from "./pages/UserResume";
+import InitialPage from "./pages/Initial";
 import './styles/global.css'
 
 
@@ -37,6 +38,7 @@ const App = () => {
           createBrowserRouter(
             createRoutesFromElements(
               <Route path="/" element={<MainLayout />}>
+                <Route path='/' element={<InitialPage />}/>
                 <Route path={ROUTE_CONSTANTS.LOGIN} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.CABINET} /> : <Login />} />
                 <Route path={ROUTE_CONSTANTS.REGISTER} element={isAuth ? <Navigate to={ROUTE_CONSTANTS.CABINET} /> : <Register />} />
                 <Route path={ROUTE_CONSTANTS.CABINET} element={isAuth ? <CabinetLayout /> : <Navigate to={ROUTE_CONSTANTS.LOGIN} />}>
