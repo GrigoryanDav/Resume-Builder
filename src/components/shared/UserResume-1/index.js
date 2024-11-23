@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { GithubOutlined, FacebookOutlined, PhoneOutlined, EnvironmentOutlined, CheckOutlined, PlusOutlined, FundProjectionScreenOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined, BulbOutlined, MailOutlined } from '@ant-design/icons'
 import './index.css'
 
 
@@ -7,7 +8,7 @@ const FirstResume = () => {
 
     const showSkills = (skills) => {
         return skills.map((skill, index) => (
-            <li key={index}>{skill}</li>
+            <li key={index}><span><CheckOutlined /></span>{skill}</li>
         ))
     }
 
@@ -26,10 +27,10 @@ const FirstResume = () => {
             const item = groupedEducation[index];
             return (
                 <div key={index}>
-                    <h3>College/School: {item.collegeSchool}</h3>
-                    <h3>Course Name: {item.courseName}</h3>
-                    <h3>Completion Year: {item.completionYear}</h3>
-                    <h3>Percentage: {item.percentage}</h3>
+                    <h3><span><PlusOutlined /></span>College/School: {item.collegeSchool}</h3>
+                    <h3><span><PlusOutlined /></span>Course Name: {item.courseName}</h3>
+                    <h3><span><PlusOutlined /></span>Completion Year: {item.completionYear}</h3>
+                    <h3><span><PlusOutlined /></span>Percentage: {item.percentage}</h3>
                 </div>
             );
         });
@@ -51,9 +52,9 @@ const FirstResume = () => {
             const item = groupedMiniProjects[index]
             return (
                 <div key={index}>
-                    <h3>Project Name: {item.projectName}</h3>
-                    <h3>Tech Stack: {item.techStack}</h3>
-                    <h3>Description: {item.description}</h3>
+                    <h3><span><ProjectOutlined /></span>Project Name: {item.projectName}</h3>
+                    <h3><span><ProjectOutlined /></span>Tech Stack: {item.techStack}</h3>
+                    <h3><span><ProjectOutlined /></span>Description: {item.description}</h3>
                 </div>
             )
         })
@@ -64,18 +65,18 @@ const FirstResume = () => {
             <div className="leftSide_container">
                 <img src={profile.profileImage} alt="profile-image" />
                 <div className="contact">
-                    <h2>Contact</h2>
+                    <h2><span><ContactsOutlined /></span>Contact</h2>
                     <div>
-                        <h3>{profile.adress}</h3>
-                        <h3>{profile.phoneNumber}</h3>
+                        <h3><span className="home-icon"><EnvironmentOutlined /></span>{profile.adress}</h3>
+                        <h3><span><PhoneOutlined /></span>{profile.phoneNumber}</h3>
                     </div>
                 </div>
                 <hr />
                 <div className="social">
-                    <h2>Socials</h2>
+                    <h2><span><MailOutlined /></span>Socials</h2>
                     <div>
-                        <a href={social.social_facebook} target="_blank" rel="noreferrer">FACEBOOK</a>
-                        <a href={social.social_github} target="_blank" rel="noreferrer">GITHUB</a>
+                        <a href={social.social_facebook} target="_blank" rel="noreferrer"><span className="facebook-icon"><FacebookOutlined /></span>FACEBOOK</a>
+                        <a href={social.social_github} target="_blank" rel="noreferrer"><span className="github-icon"><GithubOutlined /> </span>GITHUB</a>
                     </div>
                 </div>
             </div>
@@ -84,21 +85,21 @@ const FirstResume = () => {
                 <h1>{profile.firstName} {profile.lastName}</h1>
                 <hr />
                 <div className="education">
-                    <h2>Education</h2>
+                    <h2><span><ScheduleOutlined /></span>Education</h2>
                     <div>
                         {showEducations()}
                     </div>
                 </div>
                 <hr />
                 <div className="skills">
-                    <h2>Skills</h2>
+                    <h2><span><BulbOutlined /></span>Skills</h2>
                     <ul>
                         {showSkills(skills)}
                     </ul>
                 </div>
                 <hr />
                 <div className="mini_project">
-                    <h3>Mini Project</h3>
+                    <h3><span><FundProjectionScreenOutlined /></span>Mini Project</h3>
                     <div>
                         {showMiniProjects()}
                     </div>
