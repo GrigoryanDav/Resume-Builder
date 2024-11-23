@@ -10,7 +10,7 @@ import './index.css'
 const Cabinet = () => {
     const { authUserInfo: { userData: { firstName, lastName, resume_sections } } } = useSelector((store) => store.userProfile)
     const dispatch = useDispatch()
-    
+
     const handleLogOut = async () => {
         try {
             await signOut(auth)
@@ -18,21 +18,21 @@ const Cabinet = () => {
         } catch (e) {
             console.log(e, 'Sign Out Error!')
         }
-    }    
-    
+    }
+
     return (
         <div className="cabinet_container">
             <h2>
                 Hello {firstName} {lastName}.
             </h2>
             <h3>
-            This is resume generator. You can press Create Resume button to start creating your resume
-            or if you already have a ready resume, you can click My Resume button to view it
+                This is resume generator. You can press Create Resume button to start creating your resume
+                or if you already have a ready resume, you can click My Resume button to view it
             </h3>
             <div>
-            <Link to={ROUTE_CONSTANTS.RESUME_FORM}><Button type="primary">{resume_sections ? 'Edit Resume' : 'Create Resume'}</Button></Link>
-            <Link to={ROUTE_CONSTANTS.USER_RESUME}><Button type="primary">My Resume</Button></Link>
-            <Button onClick={handleLogOut} type="primary">Log Out</Button>
+                <Link to={ROUTE_CONSTANTS.RESUME_FORM}><Button type="primary">{resume_sections ? 'Edit Resume' : 'Create Resume'}</Button></Link>
+                <Link to={ROUTE_CONSTANTS.USER_RESUME}><Button type="primary">My Resume</Button></Link>
+                <Button onClick={handleLogOut} type="primary">Log Out</Button>
             </div>
         </div>
     )
