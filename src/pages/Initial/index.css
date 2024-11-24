@@ -33,7 +33,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
+    color: rgb(92, 92, 92);
 }
 
 .information_container > h1 {
@@ -55,4 +55,26 @@
     align-items: center;
     gap: 20px;
     padding: 30px 0;
+}
+
+@media(max-width: 1000px) {
+    .initialPage_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .first-image {
+        display: none;
+    }
+}
+
+@media(max-width: 700px) {
+    .initialPage_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .second-image {
+        display: none;
+    }
 }

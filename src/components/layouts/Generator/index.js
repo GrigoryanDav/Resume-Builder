@@ -19,7 +19,7 @@ const menuItems = [
         key: ROUTE_CONSTANTS.EDUCATION_SECTION,
     },
     {
-        label: '3 Skills Sector',
+        label: '3 Skills Section',
         key: ROUTE_CONSTANTS.SKILLS_SECTOR,
     },
     {

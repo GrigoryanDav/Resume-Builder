@@ -32,6 +32,10 @@
     padding: 10px;
 }
 
+.skills > h2 {
+    text-transform: uppercase;
+}
+
 .skills > h2 > span {
     margin: 5px;
     color: yellow;
@@ -54,6 +58,7 @@
 
 .education > h2 {
     padding: 5px;
+    text-transform: uppercase;
 }
 
 .education > div > div > h3 {
@@ -88,6 +93,10 @@
     padding: 10px;
 }
 
+.mini_project > h3 {
+    text-transform: uppercase;
+}
+
 .mini_project > h3 > span {
     margin: 5px;
     color: brown;
@@ -114,6 +123,10 @@
     padding: 10px;
 }
 
+.contact > h2 {
+    text-transform: uppercase;
+}
+
 .contact > div > h3 {
     padding: 5px;
 }
@@ -135,6 +148,10 @@
 
 .social {
     padding: 10px;
+}
+
+.social > h2 {
+    text-transform: uppercase;
 }
 
 .social > h2 > span {
@@ -166,4 +183,51 @@
 
 .github-icon {
     color: grey;
+}
+
+@media(max-width: 1125px) {
+    .leftSide_container > div > div > h3 {
+        font-size: 13px;
+    }
+
+    .leftSide_container > div > h2 {
+        font-size: 16px;
+    }
+
+    span {
+        font-size: 13px;
+    }
+
+    .leftSide_container > div > div > a {
+        font-size: 13px;
+    }
+
+    .rightSide_container > div > div > div > h3 {
+        font-size: 16px;
+    }
+
+    .rightSide_container > div > h2 {
+        font-size: 18px;
+    }
+
+    .rightSide_container > h1 {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 915px) {
+    .userResume_container {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .userResume_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mini_project > div  {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

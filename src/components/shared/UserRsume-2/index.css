@@ -76,11 +76,13 @@ a {
 
 .second_skills > ul {
     text-align: left;
-    padding: 30px 40px;
+    padding: 82px 40px;
     list-style: none;
     text-transform: capitalize;
     background-color: black;
     color: white;
+    display: flex;
+    gap: 20px;
 }
 
 .second_education > h1 {
@@ -92,6 +94,7 @@ a {
 .second_education > div  {
     background-color: black;
     padding: 2px 0;
+    display: flex;
 }
 
 .second_education > div > div {
@@ -113,6 +116,7 @@ a {
 
 .second_miniProject > div {
     background-color: black;
+    display: flex;
 }
 
 .second_miniProject > div > div {

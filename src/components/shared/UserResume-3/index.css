@@ -82,10 +82,14 @@ h1 {
 }
 
 .third_education > div {
+    display: flex;
+}
+
+.third_education > div > div {
     padding: 20px;
 }
 
-.third_education > div > h3 {
+.third_education > div > div> h3 {
     padding: 5px 40px;
     text-align: right;
     text-transform: capitalize;
@@ -103,10 +107,12 @@ h1 {
     text-align: right;
     list-style: none;
     padding: 20px;
+    display: flex;
+    justify-content: end;
 }
 
 .third_skills > ul > li {
-    padding: 5px 40px;
+    padding: 5px;
     text-transform: capitalize;
     color: rgb(92, 92, 92);
     font-weight: 600;
@@ -120,11 +126,15 @@ h1 {
 }
 
 .third_miniProject > div {
+    display: flex;
+}
+
+.third_miniProject > div > div {
     padding: 20px;
     text-align: left;
 }
 
-.third_miniProject > div > h3 {
+.third_miniProject > div > div > h3 {
     text-transform: capitalize;
     direction: rtl;
     text-align: right;

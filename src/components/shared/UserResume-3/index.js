@@ -32,7 +32,9 @@ const ThirdResume = () => {
             <div className="third_right_side">
                 <div className="third_education">
                     <h1>Education</h1>
-                    {showEducations(education)}
+                    <div>
+                        {showEducations(education)}
+                    </div>
                 </div>
                 <div className="third_skills">
                     <h1>Skills</h1>
@@ -42,7 +44,9 @@ const ThirdResume = () => {
                 </div>
                 <div className="third_miniProject">
                     <h1>Mini Project</h1>
-                    {showMiniProjects(miniProject)}
+                    <div>
+                        {showMiniProjects(miniProject)}
+                    </div>
                 </div>
             </div>
         </div>
