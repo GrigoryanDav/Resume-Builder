@@ -11,6 +11,10 @@ const menuItems = [
     {
         label: '2nd Template',
         key: ROUTE_CONSTANTS.USER_RESUME_2
+    },
+    {
+        label: '3rd Template',
+        key: ROUTE_CONSTANTS.USER_RESUME_3
     }
 ]
 

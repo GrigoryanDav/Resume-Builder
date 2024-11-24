@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/layouts/Main";
-import Login from './pages/Login';
-import Register from './pages/Register'
+import Login from './pages/login';
+import Register from './pages/register'
 import { ROUTE_CONSTANTS } from "./core/utils/constants";
 import GeneratorLayout from "./components/layouts/Generator";
 import Cabinet from "./pages/Cabinet";
@@ -20,6 +20,7 @@ import UserResumeLayout from "./components/layouts/UserResume";
 import SecondResume from "./components/shared/UserRsume-2";
 import UserResume from "./pages/UserResume";
 import InitialPage from "./pages/Initial";
+import ThirdResume from "./components/shared/UserResume-3";
 import './styles/global.css'
 
 
@@ -47,6 +48,7 @@ const App = () => {
                     <Route path={ROUTE_CONSTANTS.USER_RESUME} element={<UserResume />}/>
                     <Route path={ROUTE_CONSTANTS.USER_RESUME_1} element={<FirstResume />}/>
                     <Route path={ROUTE_CONSTANTS.USER_RESUME_2} element={<SecondResume />}/>
+                    <Route path={ROUTE_CONSTANTS.USER_RESUME_3} element={<ThirdResume />}/>
                   </Route>
                   <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
                     <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />

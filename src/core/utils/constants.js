@@ -11,6 +11,7 @@ export const ROUTE_CONSTANTS = {
     USER_RESUME: '/cabinet/resume',
     USER_RESUME_1: '/cabinet/resume/1',
     USER_RESUME_2: '/cabinet/resume/2',
+    USER_RESUME_3: '/cabinet/resume/3,'
 }
 
 export const FIRESTORE_PATH_NAMES = {
