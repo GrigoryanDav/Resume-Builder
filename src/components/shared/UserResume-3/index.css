@@ -1,0 +1,133 @@
+.third_resume_container {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+.third_img_container {
+    padding: 40px;
+    background: linear-gradient(to top right, grey 50%, aqua 50%);
+}
+
+.third_img_container > img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.third_left_information {
+    background-color: grey;
+}
+
+.third_left_information > h1 {
+    padding: 20px 0;
+    color: aqua;
+}
+
+
+.third_contact > h1 {
+    color: aqua;
+    padding: 10px 0;
+    background-color: black;
+}
+
+.third_contact > div {
+    padding: 20px;
+}
+
+.third_contact > div > h3 {
+    font-size: 20px;
+    padding: 10px 40px;
+    text-align: left;
+    color: aqua;
+    text-transform: capitalize;
+}
+
+.third_social > h1 {
+    color: aqua;
+    background-color: black;
+    padding: 10px 0;
+}
+
+.third_social > div {
+    padding: 20px;
+}
+
+.third_social > div > a {
+    color: aqua;
+    font-size: 20px;
+    padding: 10px 40px;
+    text-align: left;
+}
+
+
+.third_right_side {
+    background-color: aqua;
+}
+
+.third_education {
+    padding: 40px 0;
+}
+
+.third_education > h1 {
+    background-color: white;
+    color: rgb(92, 92, 92);
+    padding: 10px;
+}
+
+.third_education > div {
+    padding: 20px;
+}
+
+.third_education > div > h3 {
+    padding: 5px 40px;
+    text-align: right;
+    text-transform: capitalize;
+    color: rgb(92, 92, 92);
+    direction: rtl;
+}
+
+.third_skills > h1 {
+    background-color: white;
+    color: rgb(92, 92, 92);
+    padding: 10px;
+}
+
+.third_skills > ul {
+    text-align: right;
+    list-style: none;
+    padding: 20px;
+}
+
+.third_skills > ul > li {
+    padding: 5px 40px;
+    text-transform: capitalize;
+    color: rgb(92, 92, 92);
+    font-weight: 600;
+    direction: rtl;
+}
+
+.third_miniProject > h1 {
+    color: rgb(92, 92, 92);
+    background: white;
+    padding: 10px;
+}
+
+.third_miniProject > div {
+    padding: 20px;
+    text-align: left;
+}
+
+.third_miniProject > div > h3 {
+    text-transform: capitalize;
+    direction: rtl;
+    text-align: right;
+    color: rgb(92, 92, 92);
+    padding: 5px 40px;
+}

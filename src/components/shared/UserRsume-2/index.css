@@ -11,10 +11,11 @@
 }
 
 .second_img_container > img {
-    width: 80%;
-    height: 60%;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     padding: 20px;
+    object-fit: cover;
 }
 
 span {
@@ -75,7 +76,7 @@ a {
 
 .second_skills > ul {
     text-align: left;
-    padding: 20px 40px;
+    padding: 30px 40px;
     list-style: none;
     text-transform: capitalize;
     background-color: black;
@@ -90,6 +91,7 @@ a {
 
 .second_education > div  {
     background-color: black;
+    padding: 2px 0;
 }
 
 .second_education > div > div {
@@ -122,4 +124,8 @@ a {
     color: white;
     text-transform: capitalize;
     padding: 5px 0;
+}
+
+.facebook-icon {
+    color: grey;
 }
