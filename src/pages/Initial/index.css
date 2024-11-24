@@ -1,3 +1,9 @@
+:root {
+    --initial-left: url('../../core/images/initial-left.png');
+    --initial-right: url('../../core/images/initial-right.webp');
+    --initial-middle: url('../../core/images/initial-middle.jpg');
+}
+
 .initialPage_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -5,14 +11,14 @@
 }
 
 .first-image {
-    background: url('../../core/images/initial-left.png');
+    background-image: var(--initial-left);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .second-image {
-    background: url('../../core/images/initial-right.webp');
+    background-image: var(--initial-right);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,7 +29,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: calc(100vh - 78.4px);
-    background: url('../../core/images/initial-middle.jpg');
+    background-image: var(--initial-middle);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
