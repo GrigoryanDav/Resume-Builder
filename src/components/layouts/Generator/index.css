@@ -9,8 +9,10 @@
 .generator_menu {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     font-size: 20px;
     border-bottom: none;
+    flex-wrap: wrap;
 }
 
 .content_container {
