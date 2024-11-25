@@ -1,39 +1,59 @@
 .userResume_container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     min-height: calc(100vh - 78.4px);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.first_profile_img, .first_userName, .contact, .education, .social, .skills {
+    grid-column: span 1; 
+  }
+  
+  .mini_project {
+    grid-column: span 2; 
+  }
 
-.leftSide_container {
+.first_profile_img {
     background-color: rgb(245, 243, 243);
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
 }
 
-.leftSide_container > img {
-    width: 100%;
-    height: 40%;
+.first_profile_img > img {
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.skills > ul{
-    list-style: none;
+.first_userName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: chocolate;
 }
 
-.rightSide_container {
-    text-align: center;
-    padding: 20px;
+.skills > ul{
+    list-style: none;
+    padding: 10px 0;
 }
 
 .skills {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: chocolate;
 }
 
 .skills > h2 {
     text-transform: uppercase;
+    background-color: rgb(245, 243, 243);
+    padding: 10px 0;
+    width: 100%;
 }
 
 .skills > h2 > span {
@@ -42,38 +62,48 @@
 }
 
 .skills > ul > li {
-    padding: 5px;
+    padding: 5px 0;
     text-transform: capitalize;
 }
 
 .skills > ul > li > span {
     font-size: 20px;
     color: green;
-    margin: 5px;
+    margin: 0 5px;
 }
 
 .education {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: chocolate;
 }
 
 .education > h2 {
-    padding: 5px;
+    padding: 10px 0;
     text-transform: uppercase;
+    background-color: rgb(245, 243, 243);
+    width: 100%;
+}
+
+.education > div > div {
+    padding: 20px 0;
 }
 
 .education > div > div > h3 {
-    padding: 5px;
+    padding: 5px 0;
     font-weight: 400;
 }
 
 .education > div > div > h3 > span {
-    margin: 10px;
+    margin: 0 10px;
     background-color: #f50057;
     color: white;
 }
 
 .education > h2 > span {
-    margin: 5px;
+    margin:0 5px;
     color: brown;
 }
 
@@ -85,21 +115,23 @@
     flex-wrap: wrap;
 }
 
-.rightSide_container > h1 {
-    padding: 10px;
-    text-transform: uppercase;
-}
-
 .mini_project {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(to left, rgb(245, 243, 243) 75%, chocolate 25%);
 }
 
 .mini_project > h3 {
     text-transform: uppercase;
+    padding: 10px 0;
+    background-color: white;
+    width: 100%;
 }
 
 .mini_project > h3 > span {
-    margin: 5px;
+    margin: 0 5px;
     color: brown;
 }
 
@@ -111,37 +143,52 @@
     flex-wrap: wrap;
 }
 
+.mini_project > div > div {
+    padding: 10px 0;
+}
+
 .mini_project > div > div > h3 {
     font-weight: 400;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 .mini_project > div > div > h3 > span {
-    margin: 5px;
+    margin: 0 5px;
     color: blue;
 }
 
 .contact {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(245, 243, 243);
 }
 
 .contact > h2 {
     text-transform: uppercase;
+    padding: 10px 0;
+    background-color: chocolate;
+    width: 100%;
+}
+
+.contact > div {
+    padding: 10px 0;
 }
 
 .contact > div > h3 {
-    padding: 5px;
+    padding: 5px 0;
 }
 
 .contact > h2 > span {
-    margin: 5px;
-    color: brown;
+    margin: 0 5px;
+    color: rgb(245, 243, 243);
 }
 
 .contact > div > h3 > span {
     font-size: 20px;
     color: green;
-    margin: 5px;
+    margin: 0 5px;
 }
 
 .contact > div > h3 > .home-icon {
@@ -149,16 +196,23 @@
 }
 
 .social {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(245, 243, 243);
 }
 
 .social > h2 {
     text-transform: uppercase;
+    background-color: chocolate;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .social > h2 > span {
-    margin: 5px;
-    color: brown;
+    margin: 0 5px;
+    color: rgb(245, 243, 243);
 }
 
 .social > div > a {
@@ -172,7 +226,7 @@
 
 .social > div > a > span {
     font-size: 30px;
-    margin: 5px;
+    margin: 0 5px;
 }
 
 .social > div {
@@ -187,49 +241,67 @@
     color: grey;
 }
 
-@media(max-width: 1125px) {
-    .leftSide_container > div > div > h3 {
-        font-size: 13px;
-    }
-
-    .leftSide_container > div > h2 {
-        font-size: 16px;
-    }
-
-    .github-icon-1, .facebook-icon-1 {
-        font-size: 13px;
-    }
-
-    .leftSide_container > div > div > a {
-        font-size: 13px;
-    }
-
-    .rightSide_container > div > div > div > h3 {
-        font-size: 16px;
-    }
-
-    .rightSide_container > div > h2 {
-        font-size: 18px;
-    }
-
-    .rightSide_container > h1 {
-        font-size: 20px;
-    }
-}
-
-@media(max-width: 915px) {
+@media(max-width: 768px) {
     .userResume_container {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr;
+    }
+
+    .first_profile_img {
+        grid-row: 1;
+    }
+
+    .first_userName {
+        grid-row: 2;
+    }
+
+    .education {
+        grid-row: 3;
+    }
+
+    .skills {
+        grid-row: 4;
+    }
+
+    .mini_project {
+        grid-row: 5;
+    }
+
+    .contact {
+        grid-row: 6;
+    }
+
+    .social {
+        grid-row: 7;
+    }
+
+    .mini_project > div {
+        background-color: chocolate;
+    }
+
+    .mini_project > h3 {
+        background-color: rgb(245, 243, 243);
+    }
+
+    .contact > h2 {
+        background-color: rgb(245, 243, 243);
+    }
+
+    .contact  {
+        background-color: chocolate;
+    }
+
+    .social > h2 {
+        background-color: rgb(245, 243, 243);
+    }
+
+    .social {
+        background-color: chocolate;
+    }
+
+    .social > div > a {
+        color: black;
     }
 }
 
-@media (max-width: 600px) {
-    .userResume_container {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
-    .mini_project > div  {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
+

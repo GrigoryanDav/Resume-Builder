@@ -21,6 +21,7 @@ h1 {
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
+    padding: 20px 0;
 }
 
 .third_img_container > h1 {
@@ -173,7 +174,35 @@ h1 {
 
 .third_miniProject > div > div > h3 {
     text-transform: capitalize;
-    text-align: right;
     color: rgb(92, 92, 92);
     padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .third_resume_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .third_skills {
+        order: 2;
+    }
+
+    .third_miniProject {
+        order: 3;
+    }
+
+    .third_contact {
+        order: 4;
+    }
+
+    .third_social {
+        order: 5;
+    }
+}
+
+@media(max-width: 500px) {
+    .third_img_container > img {
+        width: 200px;
+        height: 200px;
+    }
 }

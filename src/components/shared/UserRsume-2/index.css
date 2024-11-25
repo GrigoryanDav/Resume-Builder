@@ -136,7 +136,6 @@
 
 .second_miniProject > div > div > h3 {
     padding: 5px 0;
-    text-align: left;
     color: white;
 }
 
@@ -170,4 +169,64 @@
 
 .facebook-icon-2, .github-icon-2 {
     color: black;
+}
+
+@media(max-width: 768px) {
+    .second_resume_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .second_profile_container {
+        order: 0;
+    }
+
+    .second_education {
+        order: 1;
+    }
+
+    .second_skills {
+        order: 2;
+    }
+
+    .second_miniProject {
+        order: 3;
+    }
+
+    .second_contact_container {
+        order: 4;
+    }
+
+    .second_social_container {
+        order: 5;
+    }
+
+    .second_contact_container > h1 {
+        background-color: yellow;
+        color: black;
+    }
+
+    .second_contact_container  {
+        background-color: black;
+    }
+
+    .second_contact_container > div > h3 {
+        color: white;
+    }
+
+    .second_social_container {
+        background-color: black;
+    }
+
+    .second_social_container > h1 {
+        background-color: yellow;
+        color: black;
+    }
+
+    .second_social_container > div > a {
+        color: white;
+    }
+
+    .facebook-icon-2, .github-icon-2 {
+        color: white;
+    }
 }
