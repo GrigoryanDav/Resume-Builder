@@ -1,16 +1,19 @@
 .second_resume_container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     min-height: calc(100vh - 80px);
     font-family: 'Times New Roman', Times, serif;
 }
 
-.second_img_container {
+.second_profile_container {
+    display: flex;
+    flex-direction: column;
     background-color: yellow;
-    padding: 15px 0;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.second_img_container > img {
+.second_profile_container > img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -18,118 +21,153 @@
     object-fit: cover;
 }
 
-span {
-    margin: 5px;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    font-weight: 500;
-    font-size: 20px;
-    margin: 5px 0;
-}
-
-.contact_container > h1 {
-    text-transform: uppercase;
-    padding: 10px 0;
-    background-color: black;
-    color: white;
-}
-
-.contact_container > div {
-    text-align: right;
-    padding: 70px 20px;
-    background-color: yellow;
-}
-
-.social_container_rightSide > h1 {
-    text-transform: uppercase;
-    color: white;
-    background-color: black;
+.second_profile_container > h1 {
+    width: 100%;
     padding: 10px 0;
 }
 
-.social_container_rightSide > div {
-    background-color: yellow;
-    text-align: right;
-    padding: 40px;
-}
-
-.left_side > h1 {
-    padding: 20px;
-    background-color: black;
-    color: yellow;
-    text-transform: uppercase;
-}
-
-.left_side > h1 > span {
-    color: white;
-}
-
-.second_skills > h1 {
-    padding: 10px 0;
-    background-color: yellow;
-    text-transform: uppercase;
-}
-
-.second_skills > ul {
-    text-align: left;
-    padding: 82px 40px;
-    list-style: none;
-    text-transform: capitalize;
-    background-color: black;
-    color: white;
+.second_education {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
 }
 
 .second_education > h1 {
-    padding: 10px 0;
     background-color: yellow;
-    text-transform: uppercase;
+    color: black;
+    width: 100%;
+    padding: 10px 0;
 }
 
-.second_education > div  {
-    background-color: black;
-    padding: 2px 0;
+.second_education > div {
+    padding: 10px 0;
     display: flex;
-}
-
-.second_education > div > div {
-    padding: 20px 40px;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .second_education > div > div > h3 {
     color: white;
+    padding: 10px 0;
+    text-align: left;
     text-transform: capitalize;
-    padding: 5px 0;
 }
 
-.second_miniProject > h1 {
+.second_skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+}
+
+.second_skills > h1 {
+    background-color: yellow;
+    width: 100%;
+    color: black;
     padding: 10px 0;
-    text-transform: uppercase;
+}
+
+.second_skills > ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.second_skills > ul > li {
+    color: white;
+    padding: 5px 0;
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.second_contact_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-color: yellow;
 }
 
-.second_miniProject > div {
+.second_contact_container > h1 {
     background-color: black;
-    display: flex;
+    color: white;
+    width: 100%;
+    padding: 10px 0;
 }
 
-.second_miniProject > div > div {
-    text-align: left;
-    padding: 20px 40px;
+.second_contact_container > div {
+    padding: 10px 0;
+}
+
+.second_contact_container > div > h3 {
+    padding: 5px 0;
+    text-transform: capitalize;
+    text-align: right;
+}
+
+
+.second_miniProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+}
+
+.second_miniProject > h1 {
+    color: black;
+    background-color: yellow;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.second_miniProject > div {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .second_miniProject > div > div > h3 {
-    color: white;
-    text-transform: capitalize;
     padding: 5px 0;
+    text-align: left;
+    color: white;
 }
 
-.facebook-icon {
-    color: grey;
+.second_social_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: yellow;
+}
+
+.second_social_container > h1 {
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.second_social_container > div {
+    padding: 10px 0;
+}
+
+.second_social_container > div > a {
+    text-transform: uppercase;
+    padding: 5px 0;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.facebook-icon-2, .github-icon-2 {
+    color: black;
 }

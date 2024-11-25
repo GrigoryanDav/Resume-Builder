@@ -82,6 +82,7 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
+    flex-wrap: wrap;
 }
 
 .rightSide_container > h1 {
@@ -107,6 +108,7 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
+    flex-wrap: wrap;
 }
 
 .mini_project > div > div > h3 {
@@ -177,11 +179,11 @@
     margin: 10px 0;
 }
 
-.facebook-icon {
+.facebook-icon-1 {
     color: blue;
 }
 
-.github-icon {
+.github-icon-1 {
     color: grey;
 }
 
@@ -194,7 +196,7 @@
         font-size: 16px;
     }
 
-    span {
+    .github-icon-1, .facebook-icon-1 {
         font-size: 13px;
     }
 

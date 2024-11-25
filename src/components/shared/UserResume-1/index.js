@@ -22,8 +22,8 @@ const FirstResume = () => {
                 <div className="social">
                     <h2><span><MailOutlined /></span>Socials</h2>
                     <div>
-                        <a href={social.social_facebook} target="_blank" rel="noreferrer"><span className="facebook-icon"><FacebookOutlined /></span>FACEBOOK</a>
-                        <a href={social.social_github} target="_blank" rel="noreferrer"><span className="github-icon"><GithubOutlined /> </span>GITHUB</a>
+                        <a href={social.social_facebook} target="_blank" rel="noreferrer"><span className="facebook-icon-1"><FacebookOutlined /></span>FACEBOOK</a>
+                        <a href={social.social_github} target="_blank" rel="noreferrer"><span className="github-icon-1"><GithubOutlined /> </span>GITHUB</a>
                     </div>
                 </div>
             </div>

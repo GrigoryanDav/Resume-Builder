@@ -9,7 +9,10 @@ h1 {
 }
 
 .third_img_container {
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     background: linear-gradient(to top right, grey 50%, aqua 50%);
 }
 
@@ -20,124 +23,157 @@ h1 {
     object-fit: cover;
 }
 
-
-.third_left_information {
-    background-color: grey;
-}
-
-.third_left_information > h1 {
-    padding: 20px 0;
+.third_img_container > h1 {
+    padding: 10px 0;
     color: aqua;
 }
 
+.third_contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: grey;
+    flex-direction: column;
+}
 
 .third_contact > h1 {
     color: aqua;
     padding: 10px 0;
     background-color: black;
+    width: 100%;
 }
 
 .third_contact > div {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .third_contact > div > h3 {
     font-size: 20px;
-    padding: 10px 40px;
+    padding: 10px 0;
     text-align: left;
     color: aqua;
     text-transform: capitalize;
+}
+
+.third_social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: grey;
 }
 
 .third_social > h1 {
     color: aqua;
     background-color: black;
     padding: 10px 0;
+    width: 100%;
 }
 
 .third_social > div {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .third_social > div > a {
     color: aqua;
     font-size: 20px;
-    padding: 10px 40px;
+    padding: 10px  0;
     text-align: left;
-}
-
-
-.third_right_side {
-    background-color: aqua;
+    display: block;
+    text-decoration: none;
 }
 
 .third_education {
-    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: aqua;
 }
 
 .third_education > h1 {
     background-color: white;
     color: rgb(92, 92, 92);
-    padding: 10px;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .third_education > div {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .third_education > div > div {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .third_education > div > div> h3 {
-    padding: 5px 40px;
+    padding: 10px 0;
     text-align: right;
     text-transform: capitalize;
     color: rgb(92, 92, 92);
-    direction: rtl;
+}
+
+.third_skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: aqua;
 }
 
 .third_skills > h1 {
     background-color: white;
     color: rgb(92, 92, 92);
-    padding: 10px;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .third_skills > ul {
     text-align: right;
     list-style: none;
-    padding: 20px;
-    display: flex;
-    justify-content: end;
+    padding: 20px 0;
 }
 
 .third_skills > ul > li {
-    padding: 5px;
+    padding: 5px 0;
     text-transform: capitalize;
     color: rgb(92, 92, 92);
     font-weight: 600;
-    direction: rtl;
+    text-align: right;
+    text-transform: capitalize;
+}
+
+.third_miniProject {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: aqua;
 }
 
 .third_miniProject > h1 {
     color: rgb(92, 92, 92);
     background: white;
-    padding: 10px;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .third_miniProject > div {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.third_miniProject > div > div {
-    padding: 20px;
-    text-align: left;
-}
 
 .third_miniProject > div > div > h3 {
     text-transform: capitalize;
-    direction: rtl;
     text-align: right;
     color: rgb(92, 92, 92);
-    padding: 5px 40px;
+    padding: 10px 0;
 }
