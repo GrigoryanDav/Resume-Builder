@@ -2,6 +2,7 @@ import { Form, Input } from "antd"
 import { useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
+import { URL_PATTERN } from "../../../core/utils/constants";
 import './index.css'
 
 const Social = () => {
@@ -14,14 +15,14 @@ const Social = () => {
         let initialSocialData = null;
         const savedSocialData = sessionStorage.getItem('formData-social');
         if (savedSocialData) {
-            initialSocialData = JSON.parse(savedSocialData);  
+            initialSocialData = JSON.parse(savedSocialData);
         } else if (resume_sections && resume_sections.social) {
             initialSocialData = resume_sections.social;
         }
         if (initialSocialData) {
-            form.setFieldsValue(initialSocialData);  
+            form.setFieldsValue(initialSocialData);
         }
-    }, [form, resume_sections]); 
+    }, [form, resume_sections]);
 
     return (
         <div className="social_container">
@@ -33,6 +34,10 @@ const Social = () => {
                         {
                             required: true,
                             message: 'Please input your Facebook Link'
+                        },
+                        {
+                            pattern: URL_PATTERN,
+                            message: 'Please enter a valid URL',
                         }
                     ]}
                 >
@@ -45,6 +50,10 @@ const Social = () => {
                         {
                             required: true,
                             message: 'Please Input your GitHub Link'
+                        },
+                        {
+                            pattern: URL_PATTERN,
+                            message: 'Please enter a valid URL',
                         }
                     ]}
                 >

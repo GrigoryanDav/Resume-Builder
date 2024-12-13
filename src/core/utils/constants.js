@@ -27,3 +27,6 @@ export const SECTION_KEYS = {
     '/cabinet/resume-form/mini-project': 'miniProject',
     '/cabinet/resume-form/social': 'social',
 };
+
+
+export const URL_PATTERN = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
