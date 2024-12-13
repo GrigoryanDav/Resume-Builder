@@ -1,21 +1,63 @@
 import { Form, Input, Button } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 import './index.css';
+
 
 const EducationSection = () => {
     const [educationFields, setEducationFields] = useState([{}]);
-    const [isDeleteEnabled, setIsDeleteEnabled] = useState(false);
+    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
+    const { form } = useOutletContext();
 
+
+    // Effect to initialize project fields from session storage or user profile data.
+    useEffect(() => {
+        let initialData = null;
+
+
+        const savedData = sessionStorage.getItem('formData-education');
+        if (savedData) {
+            initialData = JSON.parse(savedData);
+        }
+
+        else if (resume_sections?.education) {
+            initialData = resume_sections.education;
+        }
+
+
+        if (initialData) {
+            const fieldCount = Object.keys(initialData).length / 4;
+            const fields = Array(fieldCount).fill({});
+            setEducationFields(fields);
+            form.setFieldsValue(initialData);
+        }
+
+    }, [form, resume_sections]);
+
+
+    // Function to add a new education field to the form
     const addEducationField = () => {
-        const newEducationFields = [...educationFields, {}];
-        setEducationFields(newEducationFields);
-        setIsDeleteEnabled(newEducationFields.length > 1);
+        setEducationFields([...educationFields, {}]);
     };
 
+
+    // Function to delete the last education field
     const deleteEducationField = () => {
-        const newEducationFields = educationFields.slice(0, -1);
-        setEducationFields(newEducationFields);
-        setIsDeleteEnabled(newEducationFields.length > 1);
+        if (educationFields.length > 1) {
+            const newFields = educationFields.slice(0, -1);
+            setEducationFields(newFields);
+
+            const lastIndex = newFields.length;
+            const fieldNames = [
+                `education_${lastIndex}_courseName`,
+                `education_${lastIndex}_collegeSchool`,
+                `education_${lastIndex}_completionYear`,
+                `education_${lastIndex}_percentage`,
+            ];
+
+            form.resetFields(fieldNames);
+        }
     };
 
     return (
@@ -79,17 +121,10 @@ const EducationSection = () => {
             </div>
 
             <div className="education_buttons">
-                <Button
-                    type="primary"
-                    onClick={addEducationField}
-                >
+                <Button type="primary" onClick={addEducationField}>
                     ADD EDUCATION
                 </Button>
-                <Button
-                    type="primary"
-                    onClick={deleteEducationField}
-                    disabled={!isDeleteEnabled}
-                >
+                <Button type="primary" onClick={deleteEducationField} disabled={educationFields.length <= 1}>
                     DELETE
                 </Button>
             </div>

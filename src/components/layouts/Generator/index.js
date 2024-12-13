@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserProfileInfo } from '../../../state-managment/slices/userProfile';
 import './index.css'
 
+
+// Menu items with section names and keys
+
 const menuItems = [
     {
         label: '1 Profile Section',
@@ -32,9 +35,16 @@ const menuItems = [
     }
 ]
 
+
+// Function to clear all session data for form sections
+
 const clearAllSessionData = () => {
     menuItems.forEach(item => {
-        sessionStorage.removeItem(`formData-${item.key}`);
+        const sectionKey = SECTION_KEYS[item.key]
+
+        if (sectionKey) {
+            sessionStorage.removeItem(`formData-${sectionKey}`);
+        }
     })
 }
 
@@ -45,36 +55,38 @@ const GeneratorLayout = () => {
     const [form] = Form.useForm()
     const [formData, setFormData] = useState({})
     const dispatch = useDispatch()
-    const { authUserInfo: { userData: { uid, resume_sections } } } = useSelector((store) => store.userProfile)
+    const { authUserInfo: { userData: { uid } } } = useSelector((store) => store.userProfile)
     const [loading, setLoading] = useState(false)
-    const [isCurrentSectionComplete, setIsCurrentSectionComplete] = useState(false)
+    const [isFormComplete, setIsFormComplete] = useState(false)
 
     const currentFormValues = Form.useWatch([], form)
-    
+
+
     useEffect(() => {
-        if (resume_sections) {
-            form.setFieldsValue(resume_sections[SECTION_KEYS[currentSection]] || {})
-        } else {
-            const savedData = sessionStorage.getItem(`formData-${currentSection}`)
-            if (savedData) {
-                form.setFieldsValue(JSON.parse(savedData))
+        // Check if all form fields are saved in session storage and last section fields are filled
+        const isAllSectionsFilled = menuItems.every((item) => {
+            const sectionKey = SECTION_KEYS[item.key]
+            if (item.key === ROUTE_CONSTANTS.SOCIAL) {
+                if (!currentFormValues || Object.keys(currentFormValues).length === 0) {
+                    return false;
+                }
+
+                return Object.values(currentFormValues).every(value => value)
             }
-        } 
-    }, [resume_sections, currentSection, form])
 
-    useEffect(() => {
-        const allFieldsFilled = currentFormValues &&
-            Object.keys(currentFormValues).length > 0 &&
-            Object.values(currentFormValues).every(value => value)
+            const sectionData = sessionStorage.getItem(`formData-${sectionKey}`)
+            if (!sectionData) {
+                return false
+            }
+            const parsedData = JSON.parse(sectionData)
+            return parsedData  && Object.values(parsedData).every((value) => value !== undefined && value !== null && value !== '')
+        })
 
-        if (currentSection === ROUTE_CONSTANTS.SOCIAL) {
-            setIsCurrentSectionComplete(allFieldsFilled)
-        } else {
-            setIsCurrentSectionComplete(false)
-        }
+        setIsFormComplete(isAllSectionsFilled)
     }, [currentFormValues, currentSection])
 
     useEffect(() => {
+        // Navigate to the first section if on the resume form route
         if (pathname === ROUTE_CONSTANTS.RESUME_FORM) {
             navigate(ROUTE_CONSTANTS.PROFILE_SECTION);
             setCurrentSection(ROUTE_CONSTANTS.PROFILE_SECTION);
@@ -82,12 +94,14 @@ const GeneratorLayout = () => {
     }, [pathname, navigate]);
 
     useEffect(() => {
+        // Clear session data when navigating away from resume form
         if (!pathname.startsWith('/cabinet/resume-form/')) {
             clearAllSessionData()
         }
     }, [pathname])
 
     const handleNavigate = ({ key }) => {
+        // Save form data before navigating to the next section
         saveCurrentSectionData(() => {
             navigate(key)
             setCurrentSection(key)
@@ -95,10 +109,11 @@ const GeneratorLayout = () => {
     }
 
     const handleHome = () => {
-        navigate(ROUTE_CONSTANTS.CABINET)
+        navigate(ROUTE_CONSTANTS.CABINET) // Navigate to the cabinet
     }
 
     const handleNext = () => {
+        // Save form data before navigating to the next section
         saveCurrentSectionData(() => {
             const currentIndex = menuItems.findIndex(item => item.key === currentSection)
             const nextIndex = (currentIndex + 1) % menuItems.length
@@ -108,15 +123,15 @@ const GeneratorLayout = () => {
     }
 
     const handleBack = () => {
-        saveCurrentSectionData(() => {
-            const currentIndex = menuItems.findIndex(item => item.key === currentSection)
-            const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length
-            navigate(menuItems[prevIndex].key)
-            setCurrentSection(menuItems[prevIndex].key)
-        })
+        // Navigate to the previous section
+        const currentIndex = menuItems.findIndex(item => item.key === currentSection)
+        const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length
+        navigate(menuItems[prevIndex].key)
+        setCurrentSection(menuItems[prevIndex].key)
     }
 
     const saveCurrentSectionData = (callback) => {
+        // Validate all form fields to ensure they are correctly filled
         form
             .validateFields()
             .then((values) => {
@@ -128,6 +143,7 @@ const GeneratorLayout = () => {
                     return
                 }
 
+                 // Merge current form data with the new values for this section
                 const updatedFormData = {
                     ...formData,
                     [sectionKey]: {
@@ -137,7 +153,7 @@ const GeneratorLayout = () => {
                 }
 
                 setFormData(updatedFormData)
-                sessionStorage.setItem(`formData-${currentSection}`, JSON.stringify(values))
+                sessionStorage.setItem(`formData-${sectionKey}`, JSON.stringify(values))
                 callback(updatedFormData)
             })
             .catch(() => {
@@ -149,6 +165,7 @@ const GeneratorLayout = () => {
     }
 
     const handleSaveAndContinue = () => {
+        // Save form data and update Firestore 
         saveCurrentSectionData(async (updatedFormData) => {
             setLoading(true)
             try {
@@ -187,12 +204,12 @@ const GeneratorLayout = () => {
                     form={form}
                     onFinish={handleSaveAndContinue}
                 >
-                    <Outlet />
+                    <Outlet context={{ form }} />
                     <Button
                         type="primary"
                         htmlType="submit"
                         loading={loading}
-                        disabled={!isCurrentSectionComplete}
+                        disabled={!isFormComplete}
                     >
                         SAVE AND CONTINUE
                     </Button>

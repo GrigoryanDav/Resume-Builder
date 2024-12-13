@@ -1,8 +1,31 @@
 import { Form, Input } from "antd"
+import { useOutletContext } from "react-router-dom"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import "./index.css"
+    ;
 
 
 const ProfileSection = () => {
+    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
+    const { form } = useOutletContext()
+
+
+    // Effect to initialize profile data from sessionStorage or Redux
+    useEffect(() => {
+        let initialProfileData = null;
+        const savedProfileData = sessionStorage.getItem('formData-profile');
+        if (savedProfileData) {
+            initialProfileData = JSON.parse(savedProfileData);
+        } else if (resume_sections && resume_sections.profile) {
+            initialProfileData = resume_sections.profile;
+        }
+        if (initialProfileData) {
+            form.setFieldsValue(initialProfileData);
+        }
+    }, [form, resume_sections]);
+
+
     return (
         <div className="profile_section_container">
             <h3>Add your profile details</h3>
