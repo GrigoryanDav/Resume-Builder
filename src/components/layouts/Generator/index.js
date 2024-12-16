@@ -79,7 +79,7 @@ const GeneratorLayout = () => {
                 return false
             }
             const parsedData = JSON.parse(sectionData)
-            return parsedData  && Object.values(parsedData).every((value) => value !== undefined && value !== null && value !== '')
+            return parsedData && Object.values(parsedData).every((value) => value !== undefined && value !== null && value !== '')
         })
 
         setIsFormComplete(isAllSectionsFilled)
@@ -143,7 +143,7 @@ const GeneratorLayout = () => {
                     return
                 }
 
-                 // Merge current form data with the new values for this section
+                // Merge current form data with the new values for this section
                 const updatedFormData = {
                     ...formData,
                     [sectionKey]: {
@@ -190,6 +190,10 @@ const GeneratorLayout = () => {
         })
     }
 
+    const isFirstSection = currentSection === menuItems[0].key;
+    const isLastSection = currentSection === menuItems[menuItems.length - 1].key;
+
+
     return (
         <div className="generator_layout_main_container">
             <Menu
@@ -217,8 +221,8 @@ const GeneratorLayout = () => {
             </div>
 
             <div className="generator_buttons">
-                <Button onClick={handleBack}>BACK</Button>
-                <Button onClick={handleNext}>NEXT</Button>
+                <Button onClick={handleBack} disabled={isFirstSection}>BACK</Button>
+                <Button onClick={handleNext} disabled={isLastSection}>NEXT</Button>
             </div>
             <div className="home_button">
                 <Button onClick={handleHome} type="primary">HOME</Button>
