@@ -30,7 +30,7 @@ const Cabinet = () => {
                 or if you already have a ready resume, you can click My Resume button to view it
             </h3>
             <div>
-                <Link to={ROUTE_CONSTANTS.RESUME_FORM}><Button type="primary">{resume_sections ? 'Edit Resume' : 'Create Resume'}</Button></Link>
+                <Link to={ROUTE_CONSTANTS.PROFILE_SECTION}><Button type="primary">{resume_sections ? 'Edit Resume' : 'Create Resume'}</Button></Link>
                 <Link to={ROUTE_CONSTANTS.USER_RESUME}><Button type="primary">My Resume</Button></Link>
                 <Button onClick={handleLogOut} type="primary">Log Out</Button>
             </div>

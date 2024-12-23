@@ -53,9 +53,9 @@ const App = () => {
                   <Route path={ROUTE_CONSTANTS.RESUME_FORM} element={<GeneratorLayout />}>
                     <Route path={ROUTE_CONSTANTS.EDUCATION_SECTION} element={<EducationSection />} />
                     <Route path={ROUTE_CONSTANTS.PROFILE_SECTION} element={<ProfileSection />} />
-                    <Route path={ROUTE_CONSTANTS.SKILLS_SECTOR} element={<SkillsSector />} />
-                    <Route path={ROUTE_CONSTANTS.MINI_PROJECT} element={<MiniProject />}/>
-                    <Route path={ROUTE_CONSTANTS.SOCIAL} element={<Social />}/>
+                    <Route path={ROUTE_CONSTANTS.SKILLS_SECTION} element={<SkillsSector />} />
+                    <Route path={ROUTE_CONSTANTS.MINIPROJECT_SECTION} element={<MiniProject />}/>
+                    <Route path={ROUTE_CONSTANTS.SOCIAL_SECTION} element={<Social />}/>
                   </Route>
                 </Route>
               </Route>

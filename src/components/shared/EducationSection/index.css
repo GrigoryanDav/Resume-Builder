@@ -20,3 +20,11 @@
     justify-content: center;
     gap: 20px;
 }
+
+.navigate_buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

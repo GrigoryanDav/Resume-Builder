@@ -1,4 +1,4 @@
-.profile_section_container > div {
+.profile_section_container > form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
@@ -7,4 +7,8 @@
 
 .profile_section_container > h3 {
     padding: 20px;
+}
+
+.profile_button {
+    margin-bottom: 10px;
 }

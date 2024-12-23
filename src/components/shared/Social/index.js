@@ -1,33 +1,47 @@
-import { Form, Input } from "antd"
-import { useSelector } from "react-redux";
-import { useOutletContext } from "react-router-dom";
+import { Button, Form, Input } from "antd"
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { URL_PATTERN } from "../../../core/utils/constants";
+import { URL_PATTERN, ROUTE_CONSTANTS } from "../../../core/utils/constants";
+import { updateFormData } from "../../../state-managment/slices/formData";
 import './index.css'
 
 const Social = () => {
-    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
-    const { form } = useOutletContext()
+    const [form] = Form.useForm()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const formData = useSelector((store) => store.formData?.social || {});
+    const social = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections?.social)
 
 
-    // Effect to initialize social links from sessionStorage or Redux
     useEffect(() => {
-        let initialSocialData = null;
-        const savedSocialData = sessionStorage.getItem('formData-social');
-        if (savedSocialData) {
-            initialSocialData = JSON.parse(savedSocialData);
-        } else if (resume_sections && resume_sections.social) {
-            initialSocialData = resume_sections.social;
+        if (formData) {
+            form.setFieldsValue(formData)
         }
-        if (initialSocialData) {
-            form.setFieldsValue(initialSocialData);
+
+        if(social) {
+            form.setFieldsValue(social)
+        
         }
-    }, [form, resume_sections]);
+    },[form, formData, social])
+
+    const handleSave = async () => {
+        try {
+            const values = await form.validateFields();
+            dispatch(updateFormData({ formName: "social", values }));
+        } catch (error) {
+            console.error("Validation failed:", error);
+        }
+    };
+
+    const handleBack = () => {
+        navigate(ROUTE_CONSTANTS.MINIPROJECT_SECTION)
+    }
 
     return (
         <div className="social_container">
             <h3>Add Facebook and Github social links</h3>
-            <div>
+            <Form name="social" form={form}>
                 <Form.Item
                     name='social_facebook'
                     rules={[
@@ -59,7 +73,9 @@ const Social = () => {
                 >
                     <Input type="text" placeholder="GitHub Link" />
                 </Form.Item>
-            </div>
+                <Button onClick={handleBack}>Back</Button>
+                <Button htmlType="submit" onClick={handleSave}>Save</Button>
+            </Form>
         </div>
     )
 }

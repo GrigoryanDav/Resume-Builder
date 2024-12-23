@@ -1,44 +1,51 @@
-import { Select, Form } from "antd"
-import { useEffect, useState } from "react"
-import { useOutletContext } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { Select, Form, Button } from "antd"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { ROUTE_CONSTANTS } from "../../../core/utils/constants"
+import { useDispatch, useSelector } from "react-redux"
+import { handleNextHelper } from "../../../core/helpers"
 import './index.css'
 
 
 
 const SkillsSector = () => {
-    const [skills, setSkills] = useState([])
-    const { form } = useOutletContext()
-    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [skill, setSkill] = useState([])
+    const formData = useSelector((store) => store.formData?.skills || {});
+    const  skills  = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections?.skills)
+    const [form] = Form.useForm()
+   
 
-
-    // Effect to initialize skills from sessionStorage or Redux store
     useEffect(() => {
-        let initialSkills = [];
-        const savedSkills = sessionStorage.getItem('formData-skills');
-        if (savedSkills) {
-            const parsedSkills = JSON.parse(savedSkills);
-            initialSkills = parsedSkills.skills || []
-        } else if (resume_sections?.skills?.skills?.length) {
-            initialSkills = resume_sections.skills.skills;
-        }
-        if (initialSkills.length > 0) {
-            setSkills(initialSkills);
-            form.setFieldsValue({ skills: initialSkills });
-        }
-    }, [form, resume_sections]);
+            if (formData) {
+                form.setFieldsValue(formData)
+            }
 
+            if(skills) {
+                form.setFieldsValue(skills)
+            }
+
+        }, [form, formData, skills])
 
     // Handler for skill selection changes
     const handleChange = (value) => {
-        setSkills(value)
+        setSkill(value)
         form.setFieldsValue({ value })
     }
+
+       const handleNext = () => {
+           handleNextHelper(form, 'skills', ROUTE_CONSTANTS.MINIPROJECT_SECTION, dispatch, navigate)
+       }
+
+        const handleBack = () => {
+            navigate(ROUTE_CONSTANTS.EDUCATION_SECTION)
+        }
 
     return (
         <div className="skills_container">
             <h3>Add your Skills</h3>
-            <div>
+            <Form name="skills" form={form}>
                 <Form.Item
                     name='skills'
                     rules={[
@@ -52,12 +59,16 @@ const SkillsSector = () => {
                         mode="tags"
                         style={{ width: 500 }}
                         placeholder='Type and press Enter to add Skill'
-                        value={skills}
+                        value={skill}
                         onChange={handleChange}
                         tokenSeparators={[',']}
                     />
                 </Form.Item>
-            </div>
+                <Button onClick={handleBack}>Back</Button>
+                <Button htmlType="submit" onClick={handleNext}>
+                    Next
+                </Button>
+            </Form>
         </div>
     )
 }

@@ -4,7 +4,7 @@
     padding: 30px;
 }
 
-.mini_project_container > form{
+.mini_project_container > form > div{
     gap: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -19,4 +19,12 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
+}
+
+.miniProject_navigate_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
 }

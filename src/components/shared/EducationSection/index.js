@@ -1,30 +1,31 @@
 import { Form, Input, Button } from "antd";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_CONSTANTS } from "../../../core/utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { handleNextHelper } from "../../../core/helpers";
 import './index.css';
 
 
 const EducationSection = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const formData = useSelector((store) => store.formData?.education);
+    const education = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections?.education)
     const [educationFields, setEducationFields] = useState([{}]);
-    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
-    const { form } = useOutletContext();
+    const [form] = Form.useForm()
 
 
-    // Effect to initialize project fields from session storage or user profile data.
     useEffect(() => {
         let initialData = null;
 
-
-        const savedData = sessionStorage.getItem('formData-education');
-        if (savedData) {
-            initialData = JSON.parse(savedData);
+        if (Object.keys(education).length > 0) {
+            initialData = education;
         }
 
-        else if (resume_sections?.education) {
-            initialData = resume_sections.education;
+        if (Object.keys(formData).length > 0) {
+            initialData = formData
         }
-
 
         if (initialData) {
             const fieldCount = Object.keys(initialData).length / 4;
@@ -32,17 +33,13 @@ const EducationSection = () => {
             setEducationFields(fields);
             form.setFieldsValue(initialData);
         }
+    }, [form, education, formData]);
 
-    }, [form, resume_sections]);
 
-
-    // Function to add a new education field to the form
     const addEducationField = () => {
         setEducationFields([...educationFields, {}]);
     };
 
-
-    // Function to delete the last education field
     const deleteEducationField = () => {
         if (educationFields.length > 1) {
             const newFields = educationFields.slice(0, -1);
@@ -60,10 +57,18 @@ const EducationSection = () => {
         }
     };
 
+    const handleNext = () => {
+        handleNextHelper(form, 'education', ROUTE_CONSTANTS.SKILLS_SECTION, dispatch, navigate)
+    };
+
+    const handleBack = () => {
+        navigate(ROUTE_CONSTANTS.PROFILE_SECTION)
+    }
+
     return (
         <div className="education_section_container">
             <h3>Add your Education</h3>
-            <div>
+            <Form name="education" form={form}>
                 {educationFields.map((_, index) => (
                     <div key={index} className="education_form_row">
                         <div>
@@ -118,15 +123,20 @@ const EducationSection = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </Form>
 
             <div className="education_buttons">
-                <Button type="primary" onClick={addEducationField}>
-                    ADD EDUCATION
-                </Button>
                 <Button type="primary" onClick={deleteEducationField} disabled={educationFields.length <= 1}>
                     DELETE
                 </Button>
+                <Button type="primary" onClick={addEducationField}>
+                    ADD EDUCATION
+                </Button>
+            </div>
+
+            <div className="navigate_buttons">
+                <Button onClick={handleBack}>Back</Button>
+                <Button htmlType="submit" onClick={handleNext}>Next</Button>
             </div>
         </div>
     );

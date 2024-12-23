@@ -1,35 +1,39 @@
-import { Form, Input } from "antd"
-import { useOutletContext } from "react-router-dom"
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { Button, Form, Input } from "antd"
+import { useNavigate } from "react-router-dom"
+import { ROUTE_CONSTANTS } from "../../../core/utils/constants"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { handleNextHelper } from "../../../core/helpers"
 import "./index.css"
-    ;
 
 
 const ProfileSection = () => {
-    const resume_sections = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections);
-    const { form } = useOutletContext()
+    const navigate = useNavigate()
+    const formData = useSelector((store) => store.formData?.profile || {});
+    const profile = useSelector((store) => store.userProfile?.authUserInfo?.userData?.resume_sections?.profile)
+    const [form] = Form.useForm()
+    const dispatch = useDispatch()
 
 
-    // Effect to initialize profile data from sessionStorage or Redux
     useEffect(() => {
-        let initialProfileData = null;
-        const savedProfileData = sessionStorage.getItem('formData-profile');
-        if (savedProfileData) {
-            initialProfileData = JSON.parse(savedProfileData);
-        } else if (resume_sections && resume_sections.profile) {
-            initialProfileData = resume_sections.profile;
+        if (formData) {
+            form.setFieldsValue(formData)
         }
-        if (initialProfileData) {
-            form.setFieldsValue(initialProfileData);
-        }
-    }, [form, resume_sections]);
 
+        if (profile) {
+            form.setFieldsValue(profile)
+        }
+
+    }, [form, formData, profile])
+
+    const handleNext = () => {
+        handleNextHelper(form, 'profile', ROUTE_CONSTANTS.EDUCATION_SECTION, dispatch, navigate)
+    };
 
     return (
         <div className="profile_section_container">
             <h3>Add your profile details</h3>
-            <div>
+            <Form name="profile" form={form}>
                 <div>
                     <Form.Item
                         name='firstName'
@@ -71,11 +75,11 @@ const ProfileSection = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please nput your Phone Number'
+                                message: 'Please input your Phone Number'
                             }
                         ]}
                     >
-                        <Input placeholder="Phone Number" type="text" />
+                        <Input placeholder="Phone Number" type="number" />
                     </Form.Item>
                     <Form.Item
                         name='adress'
@@ -89,7 +93,10 @@ const ProfileSection = () => {
                         <Input placeholder="Adress" />
                     </Form.Item>
                 </div>
-            </div>
+            </Form>
+            <Button htmlType="submit" onClick={handleNext} className="profile_button">
+                Next
+            </Button>
         </div>
     )
 }
