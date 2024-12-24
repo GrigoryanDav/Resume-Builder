@@ -20,11 +20,11 @@ const MiniProject = () => {
     useEffect(() => {
         let initialData = null;
 
-        if (Object.keys(miniProject).length > 0) {
+        if (miniProject && Object.keys(miniProject).length > 0) {
             initialData = miniProject;
         }
 
-        if (Object.keys(formData).length > 0) {
+        if (formData && Object.keys(formData).length > 0) {
             initialData = formData
         }
 

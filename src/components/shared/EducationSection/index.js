@@ -19,11 +19,11 @@ const EducationSection = () => {
     useEffect(() => {
         let initialData = null;
 
-        if (Object.keys(education).length > 0) {
+        if (education && Object.keys(education).length > 0) {
             initialData = education;
         }
 
-        if (Object.keys(formData).length > 0) {
+        if (formData && Object.keys(formData).length > 0) {
             initialData = formData
         }
 
