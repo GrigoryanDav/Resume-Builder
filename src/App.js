@@ -25,7 +25,8 @@ import './styles/global.css'
 
 
 const App = () => {
-  const { loading, authUserInfo: { isAuth, userData: { resume_sections } } } = useSelector((store) => store.userProfile)
+  const { loading, authUserInfo: { isAuth, userData } } = useSelector((store) => store.userProfile)
+  const resume_sections = userData?.resume_sections
   const dispatch = useDispatch()
 
   useEffect(() => {
