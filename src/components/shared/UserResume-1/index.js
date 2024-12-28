@@ -1,40 +1,44 @@
 import { useSelector } from "react-redux"
 import { showEducations, showMiniProjects, showSkills } from "../../../core/helpers"
 import { GithubOutlined, FacebookOutlined, PhoneOutlined, EnvironmentOutlined, FundProjectionScreenOutlined, ScheduleOutlined, ContactsOutlined, BulbOutlined, MailOutlined } from '@ant-design/icons'
+import { useOutletContext } from "react-router-dom"
+import { Button } from "antd"
 import './index.css'
-
 
 const FirstResume = () => {
     const { authUserInfo: { userData: { resume_sections: { profile, education, skills: { skills }, social, miniProject } } } } = useSelector((store) => store.userProfile)
+    const { downloadPDF, pdfRef } = useOutletContext()
+
 
     return (
-        <div className="userResume_container">
-            <div className="first_profile_img">
-                <img src={profile.profileImage} alt="profile-image" />
-            </div>
-            <div className="first_userName">
-                <h1>{profile.firstName} {profile.lastName}</h1>
-            </div>
-            <div className="contact">
-                <h2><span><ContactsOutlined /></span>Contact</h2>
-                <div>
-                    <h3><span className="home-icon"><EnvironmentOutlined /></span>{profile.adress}</h3>
-                    <h3><span><PhoneOutlined /></span>{profile.phoneNumber}</h3>
+        <div>
+            <div className="userResume_container" ref={pdfRef}>
+                <div className="first_profile_img">
+                    <img src={profile.profileImage} alt="profile-image" />
                 </div>
-            </div>
-            <div className="education">
-                <h2><span><ScheduleOutlined /></span>Education</h2>
-                <div>
-                    {showEducations(education)}
+                <div className="first_userName">
+                    <h1>{profile.firstName} {profile.lastName}</h1>
                 </div>
-            </div>
-            <div className="social">
-                <h2><span><MailOutlined /></span>Socials</h2>
-                <div>
-                    <a href={social.social_facebook} target="_blank" rel="noreferrer"><span className="facebook-icon-1"><FacebookOutlined /></span>FACEBOOK</a>
-                    <a href={social.social_github} target="_blank" rel="noreferrer"><span className="github-icon-1"><GithubOutlined /> </span>GITHUB</a>
+                <div className="contact">
+                    <h2><span><ContactsOutlined /></span>Contact</h2>
+                    <div>
+                        <h3><span className="home-icon"><EnvironmentOutlined /></span>{profile.adress}</h3>
+                        <h3><span><PhoneOutlined /></span>{profile.phoneNumber}</h3>
+                    </div>
                 </div>
-            </div>
+                <div className="education">
+                    <h2><span><ScheduleOutlined /></span>Education</h2>
+                    <div>
+                        {showEducations(education)}
+                    </div>
+                </div>
+                <div className="social">
+                    <h2><span><MailOutlined /></span>Socials</h2>
+                    <div>
+                        <a href={social.social_facebook} target="_blank" rel="noreferrer"><span className="facebook-icon-1"><FacebookOutlined /></span>FACEBOOK</a>
+                        <a href={social.social_github} target="_blank" rel="noreferrer"><span className="github-icon-1"><GithubOutlined /> </span>GITHUB</a>
+                    </div>
+                </div>
                 <div className="skills">
                     <h2><span><BulbOutlined /></span>Skills</h2>
                     <ul>
@@ -49,6 +53,8 @@ const FirstResume = () => {
                     </div>
                 </div>
             </div>
+            <Button onClick={downloadPDF} style={{marginTop: '20px'}}>Download PDF</Button>
+        </div>
     )
 }
 
